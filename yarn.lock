@@ -3976,16 +3976,14 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-addons-update@^15.4.2:
-  version "15.6.0"
-  resolved "https://registry.npmjs.org/react-addons-update/-/react-addons-update-15.6.0.tgz#67f8d5a3d3d8ac7ccfa452565a8310065178e748"
+react-dom@^15.6.1:
+  version "15.6.1"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
   dependencies:
     fbjs "^0.8.9"
+    loose-envify "^1.1.0"
     object-assign "^4.1.0"
-
-react-dom@15.3.0:
-  version "15.3.0"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-15.3.0.tgz#24a6a3df67969656b8a8225fd0d7fcb939d28bdd"
+    prop-types "^15.5.10"
 
 react-hot-api@^0.4.5:
   version "0.4.7"

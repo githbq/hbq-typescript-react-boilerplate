@@ -1,10 +1,7 @@
 /**
  * 程序的入口 
  */
-import * as  React from 'react'
-import * as  update from 'react-addons-update'
-//追加功能库 用来操作多层state
-React.AddonsUpdate = update
+import * as  React from 'react' 
 import * as  ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 //页面
