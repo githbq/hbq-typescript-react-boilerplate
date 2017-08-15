@@ -1,7 +1,8 @@
 /**
  * 插件配置
  */
-const webpack = require('webpack')
+
+const webpack = require('webpack') 
 const _ = require('lodash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -15,6 +16,7 @@ const devServer = require('./devServer')
 let chunks = ['vendor', 'index', 'common']
 const CompressionPlugin = require('compression-webpack-plugin')
 let plugins = [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new WebpackMd5Hash(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
