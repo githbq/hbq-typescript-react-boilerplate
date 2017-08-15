@@ -12,6 +12,7 @@
     "scripts": {
         "clear": "rimraf dist",
         "tsc": "npm run clear && tsc",
+        "start:size": "better-npm-run start:size",
         "start": "better-npm-run start",
         "clean": "better-npm-run remove",
         "open:dist": "lite-server --config \"./dev-config/lite-server-config.js\" ",
@@ -22,6 +23,13 @@
     "betterScripts": {
         "start": {
             "command": "better-npm-run remove && better-npm-run dev"
+        },
+        "start:size": {
+            "command": "better-npm-run remove && better-npm-run dev",
+            "env": {
+                "analysis": "1",
+                "description": "运行构建后会自动打开包分析"
+            }
         },
         "remove": {
             "command": "rimraf dist"
@@ -86,6 +94,7 @@
         "typescript": "^2.4.2",
         "url-loader": "0.5.7",
         "webpack": "^3.5.4",
+        "webpack-bundle-analyzer": "^2.9.0",
         "webpack-dev-server": "^2.7.1",
         "webpack-md5-hash": "^0.0.5"
     },

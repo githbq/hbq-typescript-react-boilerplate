@@ -24,6 +24,8 @@ module.exports = {
         alias: configs.alias
     },
     module: {
+        //noParse 配置用来配置哪些脚本不需要webpack转译
+        // noParse: /node_modules\/(react)/,
         rules: configs.rules
     },
     plugins: configs.plugins

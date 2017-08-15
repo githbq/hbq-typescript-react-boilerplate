@@ -2,7 +2,7 @@
  * 插件配置
  */
 
-const webpack = require('webpack') 
+const webpack = require('webpack')
 const _ = require('lodash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -13,9 +13,11 @@ const globalConfig = require('./globalConfig')
 const path = require('path')
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
 const devServer = require('./devServer')
-let chunks = ['vendor', 'index', 'common']
+const chunks = ['vendor', 'index', 'common']
 const CompressionPlugin = require('compression-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 let plugins = [
+    process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
     new webpack.optimize.ModuleConcatenationPlugin(),
     new WebpackMd5Hash(),
     new webpack.NamedModulesPlugin(),
