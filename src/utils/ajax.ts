@@ -1,67 +1,62 @@
-import fetch from 'isomorphic-fetch'
+/**
+ * entry
+ */
+import axios from 'axios'
+import { stringify } from 'qs'
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded charset=UTF-8'
+axios.defaults.withCredentials = true
+//axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('Authorization')
 const prefix = __DEV__ ? '__api__' : ''
-//fetch api简单封装 自动加前缀 去掉第一个/
-//methods:GET, POST, PUT, DELETE, HEAD
+// const prefix = '__api__'
+const fetch = (url, options) => {
+    const { method = 'get', data } = options
+    switch (method.toLowerCase()) {
+        case 'get':
+            return axios.get(url, { params: data })
+        case 'delete':
+            return axios.delete(url, { data })
+        case 'head':
+            return axios.head(url, data)
+        case 'post':
+            return axios.post(url, stringify(data))
+        case 'put':
+            return axios.put(url, stringify(data))
+        case 'patch':
+            return axios.patch(url, data)
+        default:
+            return axios(options)
+    }
+}
+
+function checkStatus(res) {
+    if (res.status >= 200 && res.status < 300) {
+        return res
+    }
+}
+
+function handleData(res) {
+    const data = res.data
+    if (data && data.message && !data.status) {
+        // message.error(data.message)
+    }
+    // else if(data && data.message && data.status) {
+    //   message.success(data.msg)
+    // }
+    return data
+}
+
+function handleError(error) {
+    const data = error.response.data
+    if (data.errors) {
+        // message.error(`${data.message}：${data.errors}`, 5)
+    } else if (data.error) {
+        // message.error(`${data.error}：${data.error_description}`, 5)
+    } else {
+        // message.error('未知错误！', 5)
+    }
+    return { success: false }
+}
 export default {
-    fetch,
-    //总请求方法
-    request(url, options) {
-        let newUrl = this.urlFilter(url)
-        let defaultOptions = { credentials: 'include' }
-        options = {...defaultOptions, ...options }
-        return fetch(newUrl, options)
-            .then((response) => {
-                options.success && options.success(response)
-                if (response.ok) {
-                    return response.json()
-                } else {
-                    let errorData = { status: response.status, message: response.statusText }
-                    console.log('requestError:', errorData)
-                    return errorData
-                }
-            })
-            .then((json) => {
-                console.log(url, json)
-                return json
-            })
-    },
-    //get请求
-    get(url, query, options) {
-        let newUrl = this.getQueryString(url, query)
-        return this.request(newUrl, { method: 'GET', ...options })
-    },
-    //form请求
-    form(url, formDom, options) {
-        return this.request(url, {
-            method: 'POST',
-            body: new FormData(formDom),
-            ...options
-        })
-    },
-    //更新请求 post传参
-    put(url, data, options) {
-        return this.post(url, data, {
-            method: 'PUT',
-            ...options
-        })
-    },
-    //删除请求  get请求传参
-    delete(url, query) {
-        let newUrl = this.getQueryString(url, query)
-        return this.request(newUrl, { method: 'DELETE' })
-    },
-    //post 请求
-    post(url, data, options) {
-        return this.request(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            ...options
-        })
-    },
     trim(str) {
         return str.replace(/(^\s*)|(\s*$)/g, '')
     },
@@ -79,28 +74,23 @@ export default {
 
         return url
     },
-    //将对象数据组装成URL get请求串
-    getQueryString(url, params) {
-        params = params || {}
-        let queryString = Object
-            .keys(params)
-            .map(k => {
-                if (Array.isArray(params[k])) {
-                    return params[k]
-                        .map(val => `${encodeURIComponent(k)}[]=${encodeURIComponent(val)}`)
-                        .join('&')
-                }
-                return `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`
-            })
-            .join('&')
-        if (url) { //如果提供url则直接返回拼接好的URL 否则返回参数字符串
-            if (url.indexOf('?') > 0) { //已经有参数了
-                url += `&${queryString}`
-            } else if (queryString) {
-                url += `?${queryString}`
-            }
-            return url
-        }
-        return queryString
+    request(url, options) {
+        url = this.urlFilter(url)
+        return fetch(url, options)
+            .then(checkStatus)
+            .then(handleData)
+            .catch(handleError)
+    },
+    get(url, options) {
+        return this.request(url, { ...options, method: 'get' })
+    },
+    post(url, options) {
+        return this.request(url, { ...options, method: 'post' })
+    },
+    put(url, options) {
+        return this.request(url, { ...options, method: 'put' })
+    },
+    deleted(url, options) {
+        return this.request(url, { ...options, method: 'deleted' })
     }
 }
