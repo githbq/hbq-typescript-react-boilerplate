@@ -1,7 +1,12 @@
 /**
  * 程序的入口 
  */
-import * as  React from 'react' 
+import * as  React from 'react'
+
+import { observable, useStrict, action } from 'mobx'
+import { observer } from 'mobx-react'
+useStrict(true)
+
 import * as  ReactDOM from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 //页面
