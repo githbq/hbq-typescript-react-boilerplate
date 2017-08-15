@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true, 
+        "alwaysStrict": true,
+        "sourceMap": true,
+        "noEmit": false,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "strictNullChecks": false,
+        "allowUnreachableCode": true,
+        "lib": ["es2017", "dom"],
+        "typeRoots": ["node_modules/@types"],
+        "types": [],
+        "outDir": "./build",
+        "rootDir": "./src",
+        "baseUrl": "./",
+        "paths": {
+            "@/*": ["src/*"],
+            "*": ["*"]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "build",
+        "**/*.test.ts",
+        "temp"
+    ],
+    "compileOnSave": false,
+    "buildOnSave": false
+}

@@ -1,0 +1,94 @@
+{
+    "name": "webpack2-typescript-react",
+    "version": "1.0.0",
+    "description": "react typescript webpack2",
+    "author": "hbqhbq123@qq.com",
+    "keywords": [
+        "webpack2",
+        "typescript",
+        "react",
+        "frontend"
+    ],
+    "scripts": {
+        "clear": "rimraf dist",
+        "tsc": "npm run clear && tsc",
+        "start": "better-npm-run start",
+        "clean": "better-npm-run remove",
+        "open:dist": "lite-server --config \"./dev-config/lite-server-config.js\" ",
+        "build:dev": "better-npm-run build:dev",
+        "build:prod": "better-npm-run build:prod",
+        "tree:dir": "treee -l 2 --ignore node_modules/,.git/"
+    },
+    "betterScripts": {
+        "start": {
+            "command": "better-npm-run remove && better-npm-run dev"
+        },
+        "remove": {
+            "command": "rimraf dist"
+        },
+        "dev": {
+            "command": "webpack-dev-server --config \"./dev-config/webpack.config.js\" --progress --colors  --hot ",
+            "env": {
+                "NODE_ENV": "development",
+                "IS_PROXY": true
+            }
+        },
+        "build:dev": {
+            "command": "better-npm-run remove && webpack --config \"./dev-config/webpack.config.js\" --progress --colors --display-error-details",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        "build:prod": {
+            "command": "better-npm-run remove && webpack --config \"./dev-config/webpack.config.js\" --progress --colors --display-error-details",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    },
+    "dependencies": {
+        "classnames": "^2.2.5",
+        "isomorphic-fetch": "^2.2.1",
+        "lodash": "^4.17.4",
+        "moment": "^2.18.1",
+        "react": "15.3.0",
+        "react-addons-update": "^15.4.2",
+        "react-dom": "15.3.0",
+        "react-router": "3.0.0"
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.7.6",
+        "better-npm-run": "0.0.14",
+        "cli-color": "^1.2.0",
+        "compression-webpack-plugin": "^0.3.2",
+        "copy-webpack-plugin": "^4.0.1",
+        "css-loader": "0.23.1",
+        "eslint": "2.7.0",
+        "eslint-config-airbnb": "6.x",
+        "eslint-plugin-react": "4.x",
+        "extract-text-webpack-plugin": "^2.1.0",
+        "file-loader": "0.9.0",
+        "html-webpack-plugin": "2.28.0",
+        "less": "2.7.1",
+        "less-loader": "2.2.3",
+        "lite-server": "^2.2.2",
+        "postcss-flexibility": "^1.1.0",
+        "postcss-loader": "^1.3.3",
+        "react-hot-loader": "^1.3.1",
+        "require-dir": "^0.3.1",
+        "rimraf": "^2.6.1",
+        "source-map-loader": "^0.2.0",
+        "strip-loader": "^0.1.2",
+        "style-loader": "0.13.1",
+        "tree-cli": "^0.4.12",
+        "ts-loader": "^2.1.0",
+        "tslint": "^5.4.3",
+        "typescript": "^2.3.4",
+        "url-loader": "0.5.7",
+        "webpack": "^2.2.1",
+        "webpack-dev-server": "^2.4.1",
+        "webpack-md5-hash": "^0.0.5"
+    },
+    "repository": "https://github.com/githbq/hbq-typescript-react-boilerplate.git",
+    "license": "MIT"
+}
