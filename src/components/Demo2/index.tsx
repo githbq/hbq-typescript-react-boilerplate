@@ -5,6 +5,11 @@ import { newState } from '@/models/demo'
 
 @observer
 export default class App extends React.Component {
+    componentDidMount() {
+        setTimeout(() => {
+            newState.init()
+        }, 4000)
+    }
     render() {
         return (
             <div className='demo-component2'>

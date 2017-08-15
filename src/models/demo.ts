@@ -6,5 +6,8 @@ class MyState {
     @action addNum = () => {
         this.num++
     }
+    @action init = () => {
+        this.num = 777
+    }
 }
 export const newState = new MyState()
