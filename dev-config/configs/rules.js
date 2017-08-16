@@ -1,7 +1,7 @@
 /**
  * 文件处理
  */
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
 const lessLoaderVars = {}
 let rules = [ // 定义各种loader  
