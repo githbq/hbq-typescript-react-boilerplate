@@ -6,14 +6,15 @@ import * as React from 'react'
 import DemoComponent from '@/components/Demo'
 import DemoComponent2 from '@/components/Demo2'
 export default class extends React.Component {
-    render() {
-        return <div className='demo-route'>
-            this is demo-route
+  render() {
+    return <div className='demo-route'>
+      this is demo-route
             <DemoComponent />
-            <DemoComponent2 />
-            <DemoComponent2 />
-            <DemoComponent2 />
-        </div>
-    }
+      <DemoComponent2 />
+      <DemoComponent2 />
+      <DemoComponent2 />
+    </div>
+  }
 
-} 
+}
+
