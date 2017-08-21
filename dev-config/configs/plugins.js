@@ -22,7 +22,7 @@ let plugins = [
     new WebpackMd5Hash(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.BannerPlugin('This file is created by 58'), // 生成文件时加上注释
+    new webpack.BannerPlugin('This file is created by hbq'), // 生成文件时加上注释
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
         '__DEV__': JSON.stringify(__DEV__)
@@ -100,7 +100,7 @@ if (__DEV__) {
             // 删除所有的注释
             comments: false,
             compress: {
-                // 在UglifyJs删除没有用到的代码时不输出警告  
+                // 在UglifyJs删除没有用到的代码时不输出警告
                 warnings: false,
                 // 删除所有的 `console` 语句
                 // 还可以兼容ie浏览器
