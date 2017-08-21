@@ -4,7 +4,7 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
 const lessLoaderVars = {}
-let rules = [ // 定义各种loader  
+let rules = [ // 定义各种loader
     {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)$/,
         use: [{
@@ -33,7 +33,6 @@ let rules = [ // 定义各种loader
         use: [
                 { loader: 'style-loader', options: { sourceMap: false } }, //extract 时需要注释
                 {
-
                     loader: 'css-loader',
                     options: {
                         importLoaders: 3,
