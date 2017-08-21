@@ -56,7 +56,7 @@ function createHtmlPlugin(name, isDev = false) {
     filename: `${name}.html`,
     template: TEMPLATE_PATH,
     inject: 'body',
-    chunks: chunks.push(name), //选定需要插入的chunk名,
+    chunks: chunks.concat(name), //选定需要插入的chunk名,
     title: globalConfig.title,
     __DEV__: isDev,
     // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
