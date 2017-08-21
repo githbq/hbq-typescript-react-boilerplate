@@ -4,6 +4,36 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
 const lessLoaderVars = {}
+//是否分离格式
+const isExtractCss = false
+/**
+ * 获取样式规划
+ */
+const styleLoader = { loader: 'style-loader', options: { sourceMap: false } }
+function getStyleRules(isExtract) {
+  return [
+    ...(isExtract ? [] : [styleLoader]), //extract 时需要注释
+    {
+      loader: 'css-loader',
+      options: {
+        importLoaders: 3,
+        minimize: !__DEV__,
+        sourceMap: false
+      }
+    },
+    {
+      loader: 'postcss-loader',
+      query: JSON.stringify(require('./utils').postCSSConfig)
+    },
+    {
+      loader: 'less-loader',
+      options: {
+        modifyVars: lessLoaderVars,
+        sourceMap: false
+      }
+    }
+  ]
+}
 let rules = [ // 定义各种loader
   {
     test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)$/,
@@ -12,48 +42,12 @@ let rules = [ // 定义各种loader
       options: { limit: 8192, name: 'assets/generates/[hash].[ext]' }
     }]
   },
-  // {
-  //     test: /\.(less|css)$/,
-  //     use: [
-  //         { loader: 'style-loader' },
-  //         { loader: 'css-loader' },
-  //         { loader: 'postcss-loader' },
-  //         {
-  //             loader: 'less-loader',
-  //             options: {
-  //                 sourceMap: true,
-  //                 modifyVars: lessLoaderVars
-  //             }
-  //         }
-  //     ]
-  // },
   {
     test: /\.(less|css)$/,
-    // use: ExtractTextPlugin.extract({
-    // fallback: { loader: 'style-loader', options: { sourceMap: false } },
-    use: [
-      { loader: 'style-loader', options: { sourceMap: false } }, //extract 时需要注释
-      {
-        loader: 'css-loader',
-        options: {
-          importLoaders: 3,
-          minimize: !__DEV__,
-          sourceMap: false
-        }
-      },
-      {
-        loader: 'postcss-loader',
-        query: JSON.stringify(require('./utils').postCSSConfig)
-      },
-      {
-        loader: 'less-loader',
-        options: {
-          modifyVars: lessLoaderVars,
-          sourceMap: false
-        }
-      }
-    ]
-    // })
+    use: isExtractCss ? ExtractTextPlugin.extract({
+      fallback: styleLoader,
+      use: getStyleRules(true)
+    }) : getStyleRules(false)
   }
 ]
 

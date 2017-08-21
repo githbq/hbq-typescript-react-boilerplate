@@ -42,7 +42,9 @@ let plugins = [
   new CopyWebpackPlugin([
     { from: 'src/assets', to: 'assets' }
   ]),
-  new ExtractTextPlugin('style/[name].[contenthash:8].css'),
+  // new ExtractTextPlugin('style/[name].[contenthash:8].css'),
+  new ExtractTextPlugin('style/[name].css'),
+
 ]
 
 //createHtmlPlugin
