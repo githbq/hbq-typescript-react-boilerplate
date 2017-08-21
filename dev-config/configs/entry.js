@@ -14,8 +14,7 @@ entries.forEach(n => {
   let key = pathTool.relative(`${APP_PATH}/entries`, n)
   key = '/' + key
   key = key.replace(/^(\.|\\|\/)*/, '').replace(ext, '')
-  console.log('key:', key)
-  entryObject[key] = n
+  entryObject[key] = n.replace(ext, '')
 })
 console.log('entryObject', color.green(JSON.stringify(entryObject)))
 module.exports = {
