@@ -49,7 +49,7 @@ let plugins = [
 function createHtmlPlugin(name, isDev = false) {
   // 生成html文件
   return new HtmlWebpackPlugin({
-    ...(isDev ? {
+    ...(!isDev ? {
       minify: { removeComments: true, collapseWhitespace: true },
       hash: true, // 引入js/css的时候加个hash, 防止cdn的缓存问题
     } : {}),
@@ -58,7 +58,7 @@ function createHtmlPlugin(name, isDev = false) {
     inject: 'body',
     chunks: chunks.push(name), //选定需要插入的chunk名,
     title: globalConfig.title,
-    __DEV__: __DEV__,
+    __DEV__: isDev,
     // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
     favIcon: globalConfig.favicon,
     chunksSortMode: 'dependency'
