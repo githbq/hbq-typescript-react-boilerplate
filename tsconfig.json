@@ -5,7 +5,7 @@
         "jsx": "react",
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true, 
+        "experimentalDecorators": true,
         "alwaysStrict": true,
         "sourceMap": true,
         "noEmit": false,
@@ -15,14 +15,11 @@
         "allowUnreachableCode": true,
         "lib": ["es2017", "dom"],
         "typeRoots": ["node_modules/@types"],
-        "types": [],
+        "types": ["react"],
         "outDir": "./build",
         "rootDir": "./src",
         "baseUrl": "./",
-        "paths": {
-            "@/*": ["src/*"],
-            "*": ["*"]
-        }
+        "paths": {"@/*": ["src/*"], "*": ["*"]}
     },
     "exclude": [
         "node_modules",
