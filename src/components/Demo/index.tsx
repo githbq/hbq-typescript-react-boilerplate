@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './index.less'
+import './style'
 
 /**
  * 组件demo

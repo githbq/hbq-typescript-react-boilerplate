@@ -1,7 +1,7 @@
 /**
  * 路由页面
  */
-import './index.less'
+import './style'
 import * as React from 'react'
 import DemoComponent from '@/components/Demo'
 export default class extends React.Component {
