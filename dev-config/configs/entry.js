@@ -12,7 +12,9 @@ const ext = '.tsx'
 const entryObject = {}
 entries.forEach(n => {
   let key = pathTool.relative(`${APP_PATH}/entries`, n)
-  key = key.replace(/(\.|\\|\/)*?/, '').replace(ext, '')
+  key = '/' + key
+  key = key.replace(/^(\.|\\|\/)*/, '').replace(ext, '')
+  console.log('key:', key)
   entryObject[key] = n
 })
 console.log('entryObject', color.green(JSON.stringify(entryObject)))
