@@ -14,7 +14,6 @@ export default class extends React.Component<Props, State> {
     super(props)
   }
   render() {
-    this.setState({ abc: 1234 })
     return (
       <div>
         <h1 className='demo-component'>
