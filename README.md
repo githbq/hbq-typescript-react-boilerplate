@@ -1,4 +1,4 @@
-# webpack2-react
+# webpack3-typescript-react
 
 ## 启动命令
 
