@@ -31,6 +31,12 @@ function getStyleRules(isExtract) {
         modifyVars: lessLoaderVars,
         sourceMap: false
       }
+    },
+    {
+      loader: 'stylefmt-loader',
+      options: {
+        config: '.stylelintrc'
+      }
     }
   ]
 }
