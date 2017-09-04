@@ -39,3 +39,9 @@
 //style.less
 @import '~@/common/main.less'
 ```
+#### 更新纪录
+1. 添加 `tslint` 任务
+2. 添加 `tslint-loader`
+  - 会自动格式化错误的代码风格
+3. 添加 `stylelint-loader`
+  - 会自动格式化错误的代码风格Ï
