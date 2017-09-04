@@ -20,7 +20,7 @@ export default class extends React.Component<Props, State> {
     return <div className='demo-route'>
       this is demo-route
              <DemoComponent />
-      {this.state.list.join('=-=')}
+      {this.state.list.join('---')}
       {this.props.list.join('****')}
     </div>
   }
