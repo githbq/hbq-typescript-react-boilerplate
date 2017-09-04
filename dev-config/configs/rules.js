@@ -49,6 +49,11 @@ let rules = [ // 定义各种loader
       fallback: styleLoader,
       use: getStyleRules(true)
     }) : getStyleRules(false)
+  },
+  {
+    test: /\.tsx?$/,
+    enforce: 'pre',
+    loader: 'tslint-loader'
   }
 ]
 
