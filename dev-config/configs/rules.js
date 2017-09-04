@@ -52,7 +52,11 @@ let rules = [ // 定义各种loader
   {
     test: /\.tsx?$/,
     enforce: 'pre',
-    loader: 'tslint-loader'
+    loader: 'tslint-loader',
+    options: {
+      fix: true,
+      emitErrors: true
+    }
   }
 ]
 
