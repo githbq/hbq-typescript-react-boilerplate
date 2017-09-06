@@ -1,10 +1,10 @@
 {
-  "name": "webpack2-typescript-react",
+  "name": "ts-react-base",
   "version": "1.0.0",
   "description": "react typescript webpack2",
   "author": "hbqhbq123@qq.com",
   "keywords": [
-    "webpack2",
+    "webpack3",
     "typescript",
     "react",
     "frontend"

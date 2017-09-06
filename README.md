@@ -1,51 +1,67 @@
-# webpack-react
+# A nice `typescript+react` development framework by hbq
+  - support  mutilple entry mode
+## Install
+```
+git clone --depth=1  https://github.com/githbq/hbq-typescript-react-boilerplate.git
+// or use iclone-cli
+// first install `iclone-cli` in global
+npm i -g iclone-cli
+// then
+iclone init -t ts-react -n [projectName]
+```
 
-## 启动命令
+## startup
 
-### 开发模式 启动程序
+### run in dev mode
 
 > npm start
 
-### 生产模式 资源生成
+### build in production
 
 > npm run build:prod
 
-### 目录结构
+### catalog
 
 ```
+├── README.md
+├── build
 ├── dev-config
 |  ├── configs
 |  ├── index.template.html
-|  ├── lite-server-config.ts
+|  ├── lite-server-config.js
 |  ├── readme.md
-|  └── webpack.config.ts
+|  └── webpack.config.js
+├── dist
 ├── docs
 |  └── README.md
-├── package.tson
-├── README.md
+├── package.json
 ├── src
 |  ├── assets
 |  ├── common
 |  ├── components
+|  ├── entries
+|  ├── globals.d.ts
 |  ├── index.tsx
 |  ├── routes
 |  └── utils
+├── tsconfig.json
+├── tslint.json
 └── yarn.lock
 ```
 
-#### `react`开发帮助
+### `react` develop help
 1. 在less中使用import如果想使用别名路径可以使用~开头：
 ```
 //style.less
 @import '~@/common/main.less'
 ```
-#### 更新纪录
-1. 添加 `tslint` 任务
-2. 添加 `tslint-loader`
+### Updates
+1. add `tslint` task
+2. add `tslint-loader`
   - 会自动格式化错误的代码风格
-3. 添加 `stylelint-loader`
+3. add `stylelint-loader`
   - 会自动格式化错误的代码风格
-4. 添加了自定义模板
-  - 只需要在 `./src/entries/` 添加与 `xxx.tsx` 同文件名的 .html文件则自动采用此模板
+4. add了自定义模板
+  - 只需要在 `./src/entries/` add与 `xxx.tsx` 同文件名的 .html文件则自动采用此模板
   - 比如: `./src/entries/xx.tsx` 对应  `./src/entries/xx.html`
   - 如果文件名以 `_`开头则忽略掉对应的文件
