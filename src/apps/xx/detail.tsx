@@ -4,5 +4,5 @@
 import * as  React from 'react'
 import * as  ReactDOM from 'react-dom'
 
-import Detail from '@/routes/Detail'
-ReactDOM.render(<Detail />, document.getElementById('root'))
+import Demo from './components/Demo'
+ReactDOM.render(<Demo />, document.getElementById('root'))
