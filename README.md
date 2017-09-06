@@ -45,3 +45,7 @@
   - 会自动格式化错误的代码风格
 3. 添加 `stylelint-loader`
   - 会自动格式化错误的代码风格
+4. 添加了自定义模板
+  - 只需要在 `./src/entries/` 添加与 `xxx.tsx` 同文件名的 .html文件则自动采用此模板
+  - 比如: `./src/entries/xx.tsx` 对应  `./src/entries/xx.html`
+  - 如果文件名以 `_`开头则忽略掉对应的文件
