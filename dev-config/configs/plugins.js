@@ -54,7 +54,6 @@ let plugins = [
 
 //createHtmlPlugin
 function createHtmlPlugin(name, isDev = false, templateUrl = null) {
-  console.log('$$$$templateUrl', templateUrl)
   // 生成html文件
   return new HtmlWebpackPlugin({
     ...(!isDev ? {
