@@ -11,7 +11,7 @@ const jsPrefixPath = 'js'
 module.exports = {
   devtool: devTool,
   devServer: configs.devServer,
-  entry: configs.entry,
+  entry: configs.entry.entries,
   output: { // 输出的目录和文件名
     path: BUILD_PATH,
     filename: !__DEV__ ? `${jsPrefixPath}/[name].bundle.min.js` : `${jsPrefixPath}/[name].bundle.js`,
