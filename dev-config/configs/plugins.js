@@ -16,8 +16,13 @@ const devServer = require('./devServer')
 const chunks = ['vendor', 'common']
 const CompressionPlugin = require('compression-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
 const entry = require('./entry')
-const entryKeys = Object.keys(entry)
+
+//模板的正则
+const regTemplate = /-template$/
+//模板的后缀
+const templateSuffix = '-template'
 
 let plugins = [
   process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
@@ -48,7 +53,8 @@ let plugins = [
 ]
 
 //createHtmlPlugin
-function createHtmlPlugin(name, isDev = false) {
+function createHtmlPlugin(name, isDev = false, templateUrl = null) {
+  console.log('$$$$templateUrl', templateUrl)
   // 生成html文件
   return new HtmlWebpackPlugin({
     ...(!isDev ? {
@@ -56,7 +62,7 @@ function createHtmlPlugin(name, isDev = false) {
       hash: true, // 引入js/css的时候加个hash, 防止cdn的缓存问题
     } : {}),
     filename: `${name}.html`,
-    template: TEMPLATE_PATH,
+    template: templateUrl || TEMPLATE_PATH,
     inject: 'body',
     chunks: chunks.concat(name), //选定需要插入的chunk名,
     title: globalConfig.title,
@@ -68,9 +74,13 @@ function createHtmlPlugin(name, isDev = false) {
 }
 //通过entry上设计的入口配置，生成html插件数组
 function getHtmlPlugins(isDev = false) {
-  return entryKeys.map(key => {
-    return createHtmlPlugin(key, isDev)
-  })
+  //entry.all 同时包含 entry 以及 template
+  return Object.keys(entry.all)
+    //排除掉模板
+    .filter(key => !regTemplate.test(key))
+    .map(key => {
+      return createHtmlPlugin(key, isDev, entry.all[`${key}${templateSuffix}`])
+    })
 }
 
 if (__DEV__) {

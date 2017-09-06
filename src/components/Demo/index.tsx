@@ -18,7 +18,7 @@ export default class extends React.Component<Props, State> {
     return (
       <div>
         <h1 className='demo-component'>
-          <a href='detail.html'>跳转到详情页面</a>
+          <a href='xx/detail.html'>跳转到详情页面</a>
         </h1>
       </div>
     )
