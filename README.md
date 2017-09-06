@@ -39,7 +39,7 @@ iclone init -t ts-react -n [projectName]
 |  ├── assets
 |  ├── common
 |  ├── components
-|  ├── entries
+|  ├── apps
 |  ├── globals.d.ts
 |  ├── index.tsx
 |  ├── routes
@@ -62,6 +62,6 @@ iclone init -t ts-react -n [projectName]
 3. add `stylelint-loader`
   - 会自动格式化错误的代码风格
 4. add了自定义模板
-  - 只需要在 `./src/entries/` add与 `xxx.tsx` 同文件名的 .html文件则自动采用此模板
-  - 比如: `./src/entries/xx.tsx` 对应  `./src/entries/xx.html`
+  - 只需要在 `./src/apps/` add与 `xxx.tsx` 同文件名的 .html文件则自动采用此模板
+  - 比如: `./src/apps/xx.tsx` 对应  `./src/apps/xx.html`
   - 如果文件名以 `_`开头则忽略掉对应的文件

@@ -6,8 +6,17 @@ const color = require('cli-color')
 const { ROOT_PATH, APP_PATH } = require('./constants')
 
 const globby = require('globby')
-const basePath = './src/entries/**'
-const entries = globby.sync([`${basePath}/*.tsx`, `${basePath}/*.html`, `!${basePath}/_*.*`, `!${basePath}/*.test.*`], { cwd: ROOT_PATH })
+const basePath = './src/apps/**'
+const apps = globby.sync(
+  [
+    `${basePath}/*.tsx`,
+    `${basePath}/*.html`,
+    `!${basePath}/_*.*`,
+    `!${basePath}/*.test.*`,
+    `!${basePath}/components/**/*`
+  ],
+  { cwd: ROOT_PATH }
+)
 
 const entryObject = {}
 const templateObject = {}
@@ -17,8 +26,8 @@ const regExt = /\.\w*$/
 const templateSuffix = '-template'
 
 
-entries.forEach(n => {
-  let key = pathTool.relative(`${APP_PATH}/entries`, n)
+apps.forEach(n => {
+  let key = pathTool.relative(`${APP_PATH}/apps`, n)
   key = '/' + key
   key = key.replace(/^(\.|\\|\/)*/, '').replace(regExt, '')
   if (/\.html$/.test(n)) {
@@ -32,7 +41,7 @@ entries.forEach(n => {
 console.log('entryObject', color.green(JSON.stringify(entryObject)))
 module.exports = {
   //只包含入口tsx
-  entries: {
+  apps: {
     index: './src/index',
     ...entryObject
   },
