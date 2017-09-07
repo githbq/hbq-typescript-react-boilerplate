@@ -29,7 +29,13 @@ let rules = [ // 定义各种loader
     lessLoaderVars,
     postCSSConfig
   }),
-
+  {
+    test: /\.(png|jpg|gif|svg)$/,
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]?[hash:8]'
+    }
+  }
 ]
 
 if (__DEV__) {
