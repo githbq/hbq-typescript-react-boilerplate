@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './style'
+import * as styles from './style.less'
 
 interface State {
   abc: number
@@ -17,7 +17,7 @@ export default class extends React.Component<Props, State> {
     return (
       <div>
         <h1 className='demo-component'>
-         这是Detail组件
+          这是Detail组件
         </h1>
       </div>
     )

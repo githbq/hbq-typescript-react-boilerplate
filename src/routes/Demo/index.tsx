@@ -1,7 +1,7 @@
 /**
  * 路由页面
  */
-import './style'
+import * as styles from './style.less'
 import * as React from 'react'
 import DemoComponent from '@/components/Demo'
 export interface State {
@@ -17,7 +17,7 @@ export default class extends React.Component<Props, State> {
   }
   render() {
     console.log(this.state)
-    return <div className='demo-route'>
+    return <div className={styles['demo-route']}>
       this is demo-route
              <DemoComponent />
       {this.state.list.join('---')}
