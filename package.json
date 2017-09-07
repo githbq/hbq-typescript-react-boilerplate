@@ -32,7 +32,9 @@
                 "description": "运行构建后会自动打开包分析"
             }
         },
-        "remove": {"command": "rimraf dist"},
+        "remove": {
+            "command": "rimraf dist"
+        },
         "dev": {
             "command": "webpack-dev-server --config \"./dev-config/webpack.config.js\" --progress --colors  --hot ",
             "env": {
@@ -42,11 +44,15 @@
         },
         "build:dev": {
             "command": "better-npm-run remove && webpack --config \"./dev-config/webpack.config.js\" --progress --colors --display-error-details",
-            "env": {"NODE_ENV": "development"}
+            "env": {
+                "NODE_ENV": "development"
+            }
         },
         "build:prod": {
             "command": "better-npm-run remove && webpack --config \"./dev-config/webpack.config.js\" --progress --colors --display-error-details",
-            "env": {"NODE_ENV": "production"}
+            "env": {
+                "NODE_ENV": "production"
+            }
         }
     },
     "dependencies": {
