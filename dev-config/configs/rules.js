@@ -18,15 +18,7 @@ let rules = [ // 定义各种loader
     lessLoaderVars,
     postCSSConfig
   }),
-  {
-    test: /\.tsx?$/,
-    enforce: 'pre',
-    loader: 'tslint-loader',
-    options: {
-      fix: true,
-      emitErrors: true
-    }
-  }
+
 ]
 
 if (__DEV__) {
