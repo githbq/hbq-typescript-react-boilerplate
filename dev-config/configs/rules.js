@@ -13,6 +13,17 @@ let rules = [ // 定义各种loader
       options: { limit: 8192, name: 'assets/generates/[hash].[ext]' }
     }]
   },
+  {
+    test: /\.tsx?$/,
+    enforce: 'pre',
+    loader: 'tslint-loader',
+    options: {
+      emitErrors: true,
+      failOnHint: true,
+      typeCheck: false,
+      fix: true,
+    }
+  },
   ...require('./rulesOfCss')({
     __DEV__,
     lessLoaderVars,

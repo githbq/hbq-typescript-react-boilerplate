@@ -16,13 +16,13 @@ export default class extends React.Component<Props, State> {
     list: [6, 7, 87, 8, 4]
   }
   render() {
+    let a = 1111
     console.log(this.state)
-    return <div className={styles['demo-route']}>
+    return <div className= {styles['demo-route']}>
       this is demo-route
              <DemoComponent />
       {this.state.list.join('---')}
       {this.props.list.join('****')}
     </div>
   }
-
 }
