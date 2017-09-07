@@ -65,3 +65,13 @@ iclone init -t ts-react -n [projectName]
   - 只需要在 `./src/apps/` add与 `xxx.tsx` 同文件名的 .html文件则自动采用此模板
   - 比如: `./src/apps/xx.tsx` 对应  `./src/apps/xx.html`
   - 如果文件名以 `_`开头则忽略掉对应的文件
+5. add css modules
+
+  ```
+  //不加入css modules
+  :global {
+  }
+  //css modules 用法
+  import * as styles from './style.less'
+  `<div className={styles['demo-route']}>`
+  ```
