@@ -14,7 +14,10 @@ const apps = globby.sync(
     `!${basePath}/_*.*`,
     `!${basePath}/*.test.*`,
     `!${basePath}/components/**/*`,
-    `!${basePath}/routes/**/*`
+    `!${basePath}/routes/**/*`,
+    `!${basePath}/common/**/*`,
+    `!${basePath}/assets/**/*`,
+    `!${basePath}/data/**/*`
   ],
   { cwd: ROOT_PATH }
 )
