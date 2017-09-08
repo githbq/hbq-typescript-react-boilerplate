@@ -61,7 +61,11 @@ if (__DEV__) {
     exclude: /(node_modules)/,
     use: [{
       loader: 'ts-loader',
-      options: { jsx: true }
+      options: {
+        jsx: true,
+        happyPackMode: true,
+        transpileOnly: true,
+      }
     },
     {
       loader: 'strip-loader',
