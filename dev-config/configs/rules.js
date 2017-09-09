@@ -2,7 +2,15 @@
  * 文件处理
  */
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
+const {
+  TEMPLATE_PATH,
+  PUBLIC_PATH,
+  ROOT_PATH,
+  APP_PATH,
+  BUILD_PATH,
+  NODE_ENV,
+  __DEV__
+} = require('./constants')
 const lessLoaderVars = {}
 const postCSSConfig = JSON.stringify(require('./utils').postCSSConfig);
 let rules = [ // 定义各种loader
@@ -10,7 +18,10 @@ let rules = [ // 定义各种loader
     test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)$/,
     use: [{
       loader: 'url-loader',
-      options: { limit: 8192, name: 'assets/generates/[hash].[ext]' }
+      options: {
+        limit: 8192,
+        name: 'assets/generates/[hash].[ext]'
+      }
     }]
   },
   {
@@ -22,6 +33,14 @@ let rules = [ // 定义各种loader
       failOnHint: true,
       typeCheck: false,
       fix: true,
+    }
+  },
+  {
+    test: /\.css$/,
+    enforce: 'pre',
+    loader: 'stylefmt-loader',
+    options: {
+      config: '.stylelintrc.josn'
     }
   },
   ...require('./rulesOfCss')({
@@ -42,8 +61,9 @@ if (__DEV__) {
   rules.push({
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
-    use: [
-      { loader: 'react-hot-loader' },
+    use: [{
+        loader: 'react-hot-loader'
+      },
       {
         loader: 'ts-loader',
         options: {
@@ -60,17 +80,21 @@ if (__DEV__) {
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
     use: [{
-      loader: 'ts-loader',
-      options: {
-        jsx: true,
-        happyPackMode: true,
-        transpileOnly: true,
+        loader: 'ts-loader',
+        options: {
+          jsx: true,
+          happyPackMode: true,
+          transpileOnly: true,
+        }
+      },
+      {
+        loader: 'strip-loader',
+        options: {
+          strip: ['logger.info', 'logger.debug', 'console.log',
+            'console.debug'
+          ]
+        }
       }
-    },
-    {
-      loader: 'strip-loader',
-      options: { strip: ['logger.info', 'logger.debug', 'console.log', 'console.debug'] }
-    }
     ]
   })
 }
