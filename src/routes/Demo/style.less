@@ -1,7 +1,70 @@
 @import '~@/common/main.less';
 
+:global {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input,
+  button,
+  select,
+  textarea {
+    outline: none;
+  }
+}
+
 .demo-route {
-  border: 5px solid red;
-  width: 500px;
-  height: 200px;
+  border: 5px solid lightskyblue;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #c4eae4;
+  border-radius: 30px;
+}
+
+.container-head {
+  padding-left: 20px;
+  flex: 0 0 auto;
+  background-color: #53a2dd;
+  border-radius: 30px;
+}
+
+.container-body {
+  flex: 1;
+  display: flex;
+}
+
+.text-area-big {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #9fd49c;
+  border-radius: 30px;
+}
+
+.textarea-container {
+  padding: 5px;
+}
+
+.text-area-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    flex: 0 0 auto;
+  }
+
+  textarea {
+    padding: 15px;
+  }
 }
