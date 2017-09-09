@@ -18,7 +18,7 @@ module.exports = {
     //     ignored: /node_modules/,
     //     poll: 1000, // Check for changes every second
     // },
-    quiet: false, // 让dev server处于静默的状态启动(控制台中不输出打包的信息)
+    quiet: true, // 让dev server处于静默的状态启动(控制台中不输出打包的信息)
     noInfo: false, // set to false to see a list of every file being bundled.
     headers: { 'X-Custom-Header': 'yes' },
     proxy: require('./proxy')
