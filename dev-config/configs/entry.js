@@ -11,6 +11,7 @@ const apps = globby.sync(
   [
     `${basePath}/*.tsx`,
     `${basePath}/*.html`,
+    `${basePath}/index.tsx`,
     `!${basePath}/_*.*`,
     `!${basePath}/*.test.*`,
     `!${basePath}/components/**/*`,
