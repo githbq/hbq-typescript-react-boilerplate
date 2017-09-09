@@ -11,11 +11,22 @@ const WebpackMd5Hash = require('webpack-md5-hash')
 const utils = require('./utils')
 const globalConfig = require('./globalConfig')
 const path = require('path')
-const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
+const {
+  TEMPLATE_PATH,
+  PUBLIC_PATH,
+  ROOT_PATH,
+  APP_PATH,
+  BUILD_PATH,
+  NODE_ENV,
+  __DEV__
+} = require('./constants')
 const devServer = require('./devServer')
 const chunks = ['vendor', 'common']
 const CompressionPlugin = require('compression-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const {
+  BundleAnalyzerPlugin
+} = require('webpack-bundle-analyzer')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const entry = require('./entry')
 
@@ -25,7 +36,8 @@ const regTemplate = /-template$/
 const templateSuffix = '-template'
 
 let plugins = [
-  process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
+  new FriendlyErrorsWebpackPlugin(),
+  process.env.analysis ? new BundleAnalyzerPlugin() : () => {},
   new webpack.optimize.ModuleConcatenationPlugin(),
   new WebpackMd5Hash(),
   new webpack.NamedModulesPlugin(),
@@ -44,9 +56,10 @@ let plugins = [
     // 这个函数决定哪些模块会被放到vender.min.js中
     minChunks: module => /node_modules/.test(module.resource)
   }),
-  new CopyWebpackPlugin([
-    { from: 'src/assets', to: 'assets' }
-  ]),
+  new CopyWebpackPlugin([{
+    from: 'src/assets',
+    to: 'assets'
+  }]),
   // new ExtractTextPlugin('style/[name].[contenthash:8].css'),
   new ExtractTextPlugin('style/[name].css'),
 
@@ -57,7 +70,10 @@ function createHtmlPlugin(name, isDev = false, templateUrl = null) {
   // 生成html文件
   return new HtmlWebpackPlugin({
     ...(!isDev ? {
-      minify: { removeComments: true, collapseWhitespace: true },
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
       hash: true, // 引入js/css的时候加个hash, 防止cdn的缓存问题
     } : {}),
     filename: `${name}.html`,

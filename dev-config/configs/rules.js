@@ -36,11 +36,11 @@ let rules = [ // 定义各种loader
     }
   },
   {
-    test: /\.css$/,
+    test: /\.less$/,
     enforce: 'pre',
     loader: 'stylefmt-loader',
     options: {
-      config: '.stylelintrc.josn'
+      config: '.stylelintrc.json'
     }
   },
   ...require('./rulesOfCss')({
