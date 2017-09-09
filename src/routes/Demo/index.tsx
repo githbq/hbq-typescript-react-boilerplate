@@ -11,7 +11,7 @@ export default class extends React.Component {
     return <div className={styles['demo-route']}>
       welcome to jsfan.cn!
       <br />
-      <a href='./editor.html'>跳转到url解析</a>
+      <a href='editor.html'>跳转到url解析</a>
     </div>
   }
 
