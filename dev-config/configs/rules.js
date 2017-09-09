@@ -14,11 +14,6 @@ let rules = [ // 定义各种loader
       options: { limit: 8192, name: 'assets/generates/[hash].[ext]' }
     }]
   },
-  ...require('./rulesOfCss')({
-    __DEV__,
-    lessLoaderVars,
-    postCSSConfig
-  }),
   {
     test: /\.tsx?$/,
     enforce: 'pre',
@@ -28,6 +23,18 @@ let rules = [ // 定义各种loader
       failOnHint: true,
       typeCheck: false,
       fix: true,
+    }
+  },
+  ...require('./rulesOfCss')({
+    __DEV__,
+    lessLoaderVars,
+    postCSSConfig
+  }),
+  {
+    test: /\.(png|jpg|gif|svg)$/,
+    loader: 'file-loader',
+    options: {
+      name: '[name].[ext]?[hash:8]'
     }
   },
 ]
@@ -55,7 +62,11 @@ if (__DEV__) {
     exclude: /(node_modules)/,
     use: [{
       loader: 'ts-loader',
-      options: { jsx: true }
+      options: {
+        jsx: true,
+        happyPackMode: true,
+        transpileOnly: true,
+      }
     },
     {
       loader: 'strip-loader',
