@@ -2895,7 +2895,7 @@ limiter@^1.0.5:
   version "1.1.0"
   resolved "https://registry.npmjs.org/limiter/-/limiter-1.1.0.tgz#6e2bd12ca3fcdaa11f224e2e53c896df3f08d913"
 
-lite-server@^2.2.2:
+lite-server@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/lite-server/-/lite-server-2.3.0.tgz#5b4cc8f5d5fd4836105480ab2ac48a3a0de2b0c8"
   dependencies:
