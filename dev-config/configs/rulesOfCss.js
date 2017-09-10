@@ -8,7 +8,7 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin')
  * isAntCssModule 启用antdcss modules
  * false 是否分离样式文件
  */
-module.exports = ({ lessLoaderVars, __DEV__, postCSSConfig }, isAntCssModule = true, extract = false) => {
+module.exports = ({ lessLoaderVars, __DEV__, postCSSConfig }, isAntCssModule = true, extract = true) => {
   const localIdentName = '[name]__[local]___[hash:base64:5]'
   const styleLoader = { loader: 'style-loader', options: { sourceMap: __DEV__ } }
   const postCSSLoader = { loader: 'postcss-loader', query: postCSSConfig }
