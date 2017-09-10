@@ -105,6 +105,9 @@
         "webpack-dev-server": "^2.7.1",
         "webpack-md5-hash": "^0.0.5"
     },
+    "engines": {
+        "node": ">=8.4"
+    },
     "repository": "https://github.com/githbq/hbq-typescript-react-boilerplate.git",
     "license": "MIT"
 }
