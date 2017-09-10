@@ -1,7 +1,7 @@
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
-/**
- * 开发服务配置
- */
+    /**
+     * 开发服务配置
+     */
 module.exports = {
     hot: true,
     open: true,

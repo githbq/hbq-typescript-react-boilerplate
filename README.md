@@ -66,7 +66,6 @@ iclone init -t ts-react -n [projectName]
   - 比如: `./src/apps/xx.tsx` 对应  `./src/apps/xx.html`
   - 如果文件名以 `_`开头则忽略掉对应的文件
 5. add css modules
-
   ```
   //不加入css modules
   :global {
@@ -75,3 +74,5 @@ iclone init -t ts-react -n [projectName]
   import * as styles from './style.less'
   `<div className={styles['demo-route']}>`
   ```
+
+6. 添加 `.pug` 模板 (比html模板更简洁高效)
