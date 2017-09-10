@@ -96,6 +96,8 @@
         "stylefmt-loader": "^1.2.3",
         "stylelint": "^8.1.1",
         "stylelint-config-standard": "^17.0.0",
+        "stylus": "^0.54.5",
+        "stylus-loader": "^3.0.1",
         "tree-cli": "^0.4.12",
         "ts-loader": "^2.3.2",
         "tslint": "^5.4.3",

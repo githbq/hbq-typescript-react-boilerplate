@@ -120,7 +120,14 @@ if (__DEV__) {
         new webpack.LoaderOptionsPlugin({
             options: {
                 context: '/',
-                postcss: utils.postCSSConfig
+                postcss: utils.postCSSConfig,
+                stylus: {
+                    default: {
+                        use: [
+
+                        ],
+                    },
+                },
             }
         }),
         // new webpack.SourceMapDevToolPlugin(

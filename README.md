@@ -76,3 +76,4 @@ iclone init -t ts-react -n [projectName]
   ```
 
 6. 添加 `.pug` 模板 (比html模板更简洁高效)
+7. 添加 `.styl` stylus 样式预处理器支持
