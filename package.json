@@ -15,12 +15,12 @@
         "start:size": "better-npm-run start:size",
         "start": "better-npm-run start",
         "clean": "better-npm-run remove",
-        "open:dist": "lite-server --config \"./dev-config/lite-server-config.js\" ",
+        "open:dist": "lite-server --config ./dev-config/lite-server-config.js ",
         "build": "better-npm-run build:dev",
         "build:dev": "better-npm-run build:dev",
         "build:prod": "better-npm-run build:prod",
         "tree:dir": "treee -l 2 --ignore node_modules/,.git/",
-        "lint": "tslint \"src/**/*.ts\""
+        "lint": "tslint ./src/**/*.ts"
     },
     "betterScripts": {
         "start": {
