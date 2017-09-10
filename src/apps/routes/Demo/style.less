@@ -60,11 +60,38 @@
   display: flex;
   flex-direction: column;
 
+  .head-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+
+  .btn-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .btn-copy {
+    cursor: pointer;
+    background-color: lightyellow;
+    padding: 2px 5px;
+    text-align: center;
+    border: 1px solid green;
+    flex: 0 0 auto;
+    border-radius: 5px;
+
+    &.ok {
+      color: green;
+    }
+  }
+
   .title {
     flex: 0 0 auto;
   }
 
   textarea {
+    font-size: 16px;
     flex: 1;
     padding: 15px;
   }
