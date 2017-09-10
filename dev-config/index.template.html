@@ -3,10 +3,10 @@
 
 <head>
     <title>
-        <%= htmlWebpackPlugin.options.title %>
+        <%= htmlWebpackPlugin.options.data.title %>
     </title>
-    <% if (htmlWebpackPlugin.options.favIcon) { %>
-        <link rel="shorticon icon" type="image/x-icon" href="<%= htmlWebpackPlugin.options.favIcon %>">
+    <% if (htmlWebpackPlugin.options.data.favIcon) { %>
+        <link rel="shorticon icon" type="image/x-icon" href="<%= htmlWebpackPlugin.options.data.favIcon %>">
         <% } %>
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -1,6 +1,7 @@
 /**
  * 程序的入口
  */
+import '@/vendors'
 import * as  React from 'react'
 import * as  ReactDOM from 'react-dom'
 
