@@ -64,7 +64,7 @@ let plugins = [
         to: 'assets'
     }]),
     // new ExtractTextPlugin('style/[name].[contenthash:8].css'),
-    new ExtractTextPlugin('style/[name].css'),
+    new ExtractTextPlugin('css/[name].css'),
 
 ]
 
