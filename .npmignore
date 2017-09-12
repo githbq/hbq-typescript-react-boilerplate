@@ -37,6 +37,8 @@ run.js
 tsconfig.json
 tslint.json
 yarn.lock
-src
+
 *.map
 *.png
+
+build
