@@ -35,7 +35,7 @@ let rules = [ // 定义各种loader
       config: '.stylelintrc.json'
     }
   },
-  ...require('./rulesOfCss')({
+  ...require('./rules.css')({
     __DEV__,
     lessLoaderVars,
     postCSSConfig
