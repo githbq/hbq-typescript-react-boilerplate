@@ -40,13 +40,31 @@ let rules = [ // 定义各种loader
     lessLoaderVars,
     postCSSConfig
   }, true, !__DEV__),
+  //files
   {
-    test: /\.(png|jpg|gif|svg)$/,
-    loader: 'file-loader',
+    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+    loader: 'url-loader',
     options: {
-      name: '[name].[ext]?[hash:8]'
+      limit: 10000,
+      name: 'images/[name].[hash:7].[ext]'
     }
   },
+  {
+    test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+    loader: 'url-loader',
+    options: {
+      limit: 10000,
+      name: 'media/[name].[hash:7].[ext]'
+    }
+  },
+  {
+    test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+    loader: 'url-loader',
+    options: {
+      limit: 10000,
+      name: 'fonts/[name].[hash:7].[ext]'
+    }
+  }
 ]
 
 if (__DEV__) {
