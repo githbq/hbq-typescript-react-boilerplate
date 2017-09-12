@@ -7,7 +7,7 @@ const { ROOT_PATH, APP_PATH } = require('./constants')
 
 const globby = require('globby')
 const appPath = './src/apps'
-const basePath = `${appPath}**`
+const basePath = `${appPath}/**`
 const apps = globby.sync(
   [
     `${basePath}/*.tsx`,
