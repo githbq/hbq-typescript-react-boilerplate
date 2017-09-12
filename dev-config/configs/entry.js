@@ -31,7 +31,8 @@ const templateObject = {}
 const regExt = /\.\w*$/
 //模板的后缀
 const templateSuffix = '-template'
-
+//模板的正则
+const regTemplate = /-template$/
 
 apps.forEach(n => {
   let key = pathTool.relative(`${APP_PATH}/apps`, n)
@@ -47,15 +48,17 @@ apps.forEach(n => {
 })
 console.log('entryObject', color.green(JSON.stringify(entryObject)))
 module.exports = {
+  templateSuffix,
+  regTemplate,
   //只包含入口tsx
   apps: {
-    index: './src/index',
+  index: './src/index',
     ...entryObject
-  },
-  //包含入口tsx  以及 template
-  all: {
-    index: './src/index',
+},
+//包含入口tsx  以及 template
+all: {
+  index: './src/index',
     ...entryObject,
     ...templateObject
-  }
+}
 }
