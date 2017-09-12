@@ -42,3 +42,4 @@ yarn.lock
 *.png
 
 build
+.package-lock.json
