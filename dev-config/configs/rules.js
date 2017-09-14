@@ -7,16 +7,6 @@ const lessLoaderVars = {}
 const postCSSConfig = JSON.stringify(require('./utils').postCSSConfig);
 let rules = [ // 定义各种loader
   {
-    test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)$/,
-    use: [{
-      loader: 'url-loader',
-      options: {
-        limit: 8192,
-        name: 'assets/generates/[hash].[ext]'
-      }
-    }]
-  },
-  {
     test: /\.tsx?$/,
     enforce: 'pre',
     loader: 'tslint-loader',
