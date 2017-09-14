@@ -8,8 +8,9 @@ function isWebpackDevServer() {
 }
 const { APPS_PATH } = require('./constants')
 const srcRelative = pathTool.relative.bind(pathTool, APPS_PATH)
-const htmlPaths = Object.keys(templateObject).map(n => srcRelative(templateObject[n]))
-
+const htmlPaths = Object.keys(templateObject).map(n =>
+  srcRelative(templateObject[n]).replace('.pug', '.html')
+)
 module.exports = {
   htmlPaths: htmlPaths.filter(n => !/index\.(pug|html)/.test(n)),
   title: 'ts-react-boilerplate',
