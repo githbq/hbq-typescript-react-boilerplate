@@ -8,10 +8,7 @@ const pug = require('../templateCompilers/pug')
 function createHtmlPlugin(name, isDev = false, templateUrl = null) {
   templateUrl = templateUrl || TEMPLATE_PATH_PUG
   const data = {
-    title: globalConfig.title,
-    __DEV__: isDev,
-    // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
-    favIcon: globalConfig.favicon,
+    ...globalConfig
   }
   let templateContent = undefined
   if (templateUrl && /.pug$/.test(templateUrl)) {
