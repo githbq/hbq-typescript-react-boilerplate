@@ -3,19 +3,11 @@ const { root, pathTool, TEMPLATE_PATH, TEMPLATE_PATH_PUG } = require('./constant
 const { templateSuffix, regTemplate, ...entry } = require('./entry')
 const globalConfig = require('./globalConfig')
 const chunks = ['vendor', 'common']
-const pug = require('../templateCompilers/pug')
 //createHtmlPlugin
 function createHtmlPlugin(name, isDev = false, templateUrl = null) {
   templateUrl = templateUrl || TEMPLATE_PATH_PUG
   const data = {
     ...globalConfig
-  }
-  let templateContent = undefined
-  if (templateUrl && /.pug$/.test(templateUrl)) {
-    templateUrl = pathTool.isAbsolute(templateUrl) ? templateUrl : root(templateUrl)
-    templateContent = pug.compile(templateUrl, data)
-    //如果有templateContent 则不能有templateUrl 会有冲突
-    templateUrl = null
   }
   // 生成html文件
   return new HtmlWebpackPlugin({
@@ -33,7 +25,6 @@ function createHtmlPlugin(name, isDev = false, templateUrl = null) {
       }
       : {}
     ),
-    templateContent,
     inject: 'body',
     chunks: chunks.concat(name), //选定需要插入的chunk名,
     chunksSortMode: 'dependency',

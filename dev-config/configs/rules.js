@@ -7,6 +7,13 @@ const lessLoaderVars = {}
 const postCSSConfig = JSON.stringify(require('./utils').postCSSConfig);
 let rules = [ // 定义各种loader
   {
+    test: /\.pug$/,
+    loader: 'pug-loader',
+    options: {
+      pretty: true
+    }
+  },
+  {
     test: /\.tsx?$/,
     enforce: 'pre',
     loader: 'tslint-loader',

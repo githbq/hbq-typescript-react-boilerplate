@@ -19,7 +19,7 @@ export default class extends React.Component<Props, State> {
     let a = 1111
     console.log(this.state)
     return <div className= {styles['demo-route']}>
-      this is demo-route
+      this is demo-route  1111
              <DemoComponent />
       {this.state.list.join('---')}
       {this.props.list.join('****')}
