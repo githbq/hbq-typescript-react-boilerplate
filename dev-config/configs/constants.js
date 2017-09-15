@@ -21,5 +21,18 @@ const __DEV__ = NODE_ENV === 'development'
 //模板地址
 const TEMPLATE_PATH = root('dev-config/index.template.html')
 const TEMPLATE_PATH_PUG = root('dev-config/index.template.pug')
-
-module.exports = { root, pathTool, APPS_PATH, TEMPLATE_PATH_PUG, TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ }
+const isWebpackDevServer = process.argv[1] && !!(/webpack-dev-server/.exec(process.argv[1]))
+module.exports = {
+  root,
+  isWebpackDevServer,
+  pathTool,
+  APPS_PATH,
+  TEMPLATE_PATH_PUG,
+  TEMPLATE_PATH,
+  PUBLIC_PATH,
+  ROOT_PATH,
+  APP_PATH,
+  BUILD_PATH,
+  NODE_ENV,
+  __DEV__
+}
