@@ -21,7 +21,8 @@ let plugins = [
   new webpack.optimize.ModuleConcatenationPlugin(),
   new WebpackMd5Hash(),
   new webpack.NamedModulesPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
+  // Use NoErrorsPlugin for webpack 1.x 这个插件1.x版本以上不需要
+  // new webpack.NoEmitOnErrorsPlugin(),
   new webpack.BannerPlugin('This file is created by hbq'), // 生成文件时加上注释
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
