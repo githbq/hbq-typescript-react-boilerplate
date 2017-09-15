@@ -57,20 +57,13 @@ if (__DEV__) {
           },
         },
       }
-    }),
-    // new webpack.SourceMapDevToolPlugin(
-    //     {}
-    // ),
-    //现在使用rules做sourcemap 此插件会导致变卡
-    // new webpack.optimize.UglifyJsPlugin({
-    //     sourceMap: true
-    // })
+    })
   ])
 } else {
   plugins = plugins.concat([
     new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0,
