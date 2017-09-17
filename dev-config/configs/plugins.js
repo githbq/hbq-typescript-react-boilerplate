@@ -27,8 +27,6 @@ let plugins = [
     from: 'src/assets',
     to: 'assets'
   }]),
-  // new ExtractTextPlugin('style/[name].[contenthash:8].css'),
-  new ExtractTextPlugin('css/[name].css'),
 ]
 if (__DEV__) {
   plugins = [
@@ -54,6 +52,8 @@ if (__DEV__) {
 } else {
   plugins = [
     ...plugins,
+    // new ExtractTextPlugin('style/[name].[contenthash:8].css'),
+    new ExtractTextPlugin('css/[name].css'),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
@@ -61,8 +61,8 @@ if (__DEV__) {
       minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
         return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
+          // module.resource &&
+          // /\.js$/.test(module.resource) &&
           /node_modules/.test(module.resource)
         )
       }
