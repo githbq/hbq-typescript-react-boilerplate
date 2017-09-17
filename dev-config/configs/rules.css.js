@@ -22,7 +22,9 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      // importLoaders: 2,
+      importLoaders: 3,
+      modules: cssModules,
+      localIdentName,
       minimize: !__DEV__,
       sourceMap: true
     }
@@ -53,41 +55,30 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
 
   let getReulsByType = (type) => {
     const { reg, loader } = regMap[type]
-    return [{
-      test: reg,
-      include: /node_modules/, //针对 node_modeuls里面的less文件
-      use: ExtractTextPlugin.extract({
-        fallback: styleLoader,
-        use: [
-          ...(extract ? [] : [styleLoader]),
-          cssLoader,
-          postCSSLoader,
-          loader
-        ]
-      })
-    },
-    {
-      test: reg,
-      exclude: /node_modules/, //针对 非 node_modeuls里面的css文件
-      use: ExtractTextPlugin.extract({
-        fallback: styleLoader,
-        use: [
-          ...(extract ? [] : [styleLoader]),
-          {
-            ...cssLoader,
-            ... {
-              options: {
-                modules: cssModules,
-                localIdentName,
-                minimize: !__DEV__,
-              }
-            }
-          },
-          postCSSLoader,
-          loader
-        ]
-      })
-    }]
+    const getCssLoaderInstance = () => {
+      return {
+        test: reg,
+        use: ExtractTextPlugin.extract({
+          fallback: styleLoader,
+          use: [
+            ...(extract ? [] : [styleLoader]),
+            cssLoader,
+            postCSSLoader,
+            loader
+          ]
+        })
+      }
+    }
+    return [
+      {
+        ...getCssLoaderInstance(),
+        include: /node_modules/, //针对 node_modeuls里面的less文件
+      },
+      {
+        ...getCssLoaderInstance(),
+        exclude: /node_modules/, //针对 非 node_modeuls里面的css文件
+      }
+    ]
   }
   return [
     ...getReulsByType('less'),
