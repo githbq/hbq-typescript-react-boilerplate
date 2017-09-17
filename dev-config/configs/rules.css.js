@@ -17,14 +17,14 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
     }
   }
   const localIdentName = '[name]__[local]___[hash:base64:5]'
-  const styleLoader = { loader: 'style-loader', options: { sourceMap: false } }
-  const postCSSLoader = { loader: 'postcss-loader', options: { sourceMap: false } }
+  const styleLoader = { loader: 'style-loader', options: { sourceMap: true } }
+  const postCSSLoader = { loader: 'postcss-loader', options: { sourceMap: true } }
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      importLoaders: 2,
+      // importLoaders: 2,
       minimize: !__DEV__,
-      sourceMap: false
+      sourceMap: true
     }
   }
 
@@ -34,7 +34,7 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
       loader: {
         loader: 'less-loader',
         options: {
-          sourceMap: false,
+          sourceMap: true,
         }
       }
     },
@@ -44,7 +44,7 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
         loader: 'stylus-loader',
         options: {
           options: {
-            sourceMap: false,
+            sourceMap: true,
           },
         }
       }
