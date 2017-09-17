@@ -28,6 +28,7 @@
     "start:size": {
       "command": "npm run clean && better-npm-run dev",
       "env": {
+        "NODE_ENV": "production",
         "analysis": "1",
         "description": "运行构建后会自动打开包分析"
       }
