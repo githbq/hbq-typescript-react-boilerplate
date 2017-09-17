@@ -1,11 +1,11 @@
 /**
  * 入口配置
  */
-const pathTool = require('path')
-const color = require('cli-color')
-const { ROOT_PATH, APP_PATH } = require('./constants')
+import * as  pathTool from 'path'
+import * as  color from 'cli-color'
+import { ROOT_PATH, APP_PATH } from './constants'
 
-const globby = require('globby')
+import * as  globby from 'globby'
 const appPath = './src/apps'
 const basePath = `${appPath}/**`
 const apps = globby.sync(
@@ -25,14 +25,14 @@ const apps = globby.sync(
   ], { cwd: ROOT_PATH }
 )
 
-const entryObject = {}
-const templateObject = {}
+export const entryObject = {}
+export const templateObject = {}
 
-const regExt = /\.\w*$/
+export const regExt = /\.\w*$/
 //模板的后缀
-const templateSuffix = '-template'
+export const templateSuffix = '-template'
 //模板的正则
-const regTemplate = /-template$/
+export const regTemplate = /-template$/
 
 apps.forEach(n => {
   let key = pathTool.relative(`${APP_PATH}/apps`, n)
@@ -47,8 +47,7 @@ apps.forEach(n => {
   entryObject[key] = n.replace(regExt, '')
 })
 console.log('entryObject', color.green(JSON.stringify(entryObject)))
-module.exports = {
-  templateObject,
+export const entry = {
   templateSuffix,
   regTemplate,
   //只包含入口tsx

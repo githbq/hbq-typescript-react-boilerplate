@@ -2,20 +2,21 @@
  * 插件配置
  */
 
-const webpack = require('webpack')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+import * as webpack from 'webpack'
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin'
+import * as CopyWebpackPlugin from 'copy-webpack-plugin'
+import * as  CompressionPlugin from 'compression-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import * as FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 //webpack-md5-hash不需要再使用了 https://sebastianblade.com/using-webpack-to-achieve-long-term-cache/
 // const WebpackMd5Hash = require('webpack-md5-hash')
-const { postCSSConfig } = require('./utils')
-const { NODE_ENV, __DEV__ } = require('./constants')
-const devServer = require('./devServer')
-const CompressionPlugin = require('compression-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const { getHtmlPlugins } = require('./plugins.html')
-// plugins
-let plugins = [
+import { postCSSConfig } from './utils'
+import { NODE_ENV, __DEV__ } from './constants'
+import { devServer } from './devServer'
+import { getHtmlPlugins } from './plugins.html'
+
+// _plugins
+let _plugins = [
   ...getHtmlPlugins(__DEV__),
   new FriendlyErrorsWebpackPlugin(),
   process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
@@ -23,14 +24,18 @@ let plugins = [
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
     '__DEV__': JSON.stringify(__DEV__)
   }),
-  new CopyWebpackPlugin([{
-    from: 'src/assets',
-    to: 'assets'
-  }]),
+  new CopyWebpackPlugin(
+    [
+      {
+        from: 'src/assets',
+        to: 'assets'
+      }
+    ]
+  ),
 ]
 if (__DEV__) {
-  plugins = [
-    ...plugins,
+  _plugins = [
+    ..._plugins,
     new webpack.HashedModuleIdsPlugin(),
     // Use NoErrorsPlugin for webpack 1.x 这个插件1.x版本以上不需要
     // new webpack.NoEmitOnErrorsPlugin(),
@@ -50,9 +55,9 @@ if (__DEV__) {
     }),
   ]
 } else {
-  plugins = [
-    ...plugins,
-    // new ExtractTextPlugin('style/[name].[contenthash:8].css'),
+  _plugins = [
+    ..._plugins,
+    // new ExtractTextPlugin('css/[name].[contenthash:8].css'),
     new ExtractTextPlugin('css/[name].css'),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
@@ -115,4 +120,5 @@ if (__DEV__) {
     new webpack.optimize.AggressiveMergingPlugin() //Merge chunks
   ]
 }
-module.exports = plugins
+
+export const plugins = _plugins

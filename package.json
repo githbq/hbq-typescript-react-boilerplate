@@ -10,12 +10,11 @@
     "frontend"
   ],
   "scripts": {
-    "clear": "rimraf dist",
-    "tsc": "npm run clear && tsc",
+    "clean": "rimraf dist build",
+    "tsc": "npm run clean && tsc",
     "start:size": "better-npm-run start:size",
     "start": "better-npm-run start",
-    "clean": "better-npm-run remove",
-    "open:dist": "lite-server --config ./dev-config/lite-server-config.js ",
+    "open:dist": "lite-server --config ./dev-config/lite-server-config.json ",
     "build": "better-npm-run build:dev",
     "build:dev": "better-npm-run build:dev",
     "build:prod": "better-npm-run build:prod",
@@ -24,33 +23,33 @@
   },
   "betterScripts": {
     "start": {
-      "command": "better-npm-run remove && better-npm-run dev"
+      "command": "npm run clean && better-npm-run dev"
     },
     "start:size": {
-      "command": "better-npm-run remove && better-npm-run dev",
+      "command": "npm run clean && better-npm-run dev",
       "env": {
         "analysis": "1",
         "description": "运行构建后会自动打开包分析"
       }
     },
-    "remove": {
-      "command": "rimraf dist"
-    },
     "dev": {
-      "command": "webpack-dev-server --config ./dev-config/webpack.config.js --progress --hot ",
+      "command": "webpack-dev-server --config ./dev-config/webpack.config.ts --progress --hot ",
       "env": {
         "NODE_ENV": "development",
         "IS_PROXY": true
       }
     },
+    "build": {
+      "command": "npm run clean && webpack --config ./dev-config/webpack.config.ts --progress --display-error-details"
+    },
     "build:dev": {
-      "command": "better-npm-run remove && webpack --config ./dev-config/webpack.config.js --progress --display-error-details",
+      "command": "better-npm-run build",
       "env": {
         "NODE_ENV": "development"
       }
     },
     "build:prod": {
-      "command": "better-npm-run remove && webpack --config ./dev-config/webpack.config.js --progress --display-error-details",
+      "command": "better-npm-run build",
       "env": {
         "NODE_ENV": "production"
       }
@@ -68,7 +67,9 @@
     "react-router": "3.0.0"
   },
   "devDependencies": {
+    "@types/node": "^8.0.28",
     "@types/react": "^16.0.2",
+    "@types/webpack": "^3.0.10",
     "autoprefixer": "^6.7.6",
     "better-npm-run": "0.0.14",
     "cli-color": "^1.2.0",
@@ -102,6 +103,7 @@
     "stylus-loader": "^3.0.1",
     "tree-cli": "^0.4.12",
     "ts-loader": "^2.3.2",
+    "ts-node": "^3.3.0",
     "tslint": "^5.4.3",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.4.2",

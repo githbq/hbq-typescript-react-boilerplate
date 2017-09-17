@@ -21,10 +21,12 @@
       "node_modules/@types"
     ],
     "types": [
-      "react"
+      "node",
+      "react",
+      "webpack"
     ],
     "outDir": "./build",
-    "rootDir": "./src",
+    "rootDir": "./",
     "baseUrl": "./",
     "paths": {
       "@/*": [
@@ -38,6 +40,7 @@
   "exclude": [
     "node_modules",
     "build",
+    "dist",
     "**/*.test.ts",
     "temp"
   ],

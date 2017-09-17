@@ -1,9 +1,11 @@
 /**
  * 文件处理
  */
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { __DEV__ } = require('./constants')
-let rules = [ // 定义各种loader
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin'
+import { __DEV__ } from './constants'
+import { getCssRules } from './rules.css'
+
+let _rules = [ // 定义各种loader
   {
     test: /\.pug$/,
     loader: 'pug-loader',
@@ -30,7 +32,7 @@ let rules = [ // 定义各种loader
       config: '.stylelintrc.json'
     }
   },
-  ...require('./rules.css')({
+  ...getCssRules({
     __DEV__,
     cssModules: true,
     extract: !__DEV__
@@ -64,7 +66,7 @@ let rules = [ // 定义各种loader
 ]
 
 if (__DEV__) {
-  rules.push({
+  _rules.push({
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
     use: [{
@@ -74,15 +76,15 @@ if (__DEV__) {
       loader: 'ts-loader',
       options: {
         jsx: true,
-        // happyPackMode: true,
-        // transpileOnly: true,
+        happyPackMode: true,
+        transpileOnly: true,
       }
     }
     ]
   })
 } else {
   //生产环境
-  rules.push({
+  _rules.push({
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
     use: [{
@@ -104,4 +106,5 @@ if (__DEV__) {
     ]
   })
 }
-module.exports = rules
+
+export const rules = _rules
