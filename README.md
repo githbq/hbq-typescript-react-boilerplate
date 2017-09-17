@@ -1,5 +1,6 @@
 # A nice `typescript+react` development framework by hbq
   - support  mutilple entry mode
+  - webpackconfig write with typescript  `.ts`
 ## Install
 ```
 git clone --depth=1  https://github.com/githbq/hbq-typescript-react-boilerplate.git
