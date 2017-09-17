@@ -1,16 +1,16 @@
 /**
  * 因为css module设置比较复杂,单独分离出来
  */
-let ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+import * as  ExtractTextPlugin from 'extract-text-webpack-plugin'
+let _ExtractTextPlugin = ExtractTextPlugin
 
 /**
  * cssModules 启用antdcss modules
  * false 是否分离样式文件
  */
-module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
+export const getCssRules = ({ __DEV__, cssModules = true, extract = true }) => {
   if (!extract) {
-    ExtractTextPlugin = {
+    _ExtractTextPlugin = {
       extract: ({ use }) => {
         return use
       }
@@ -18,11 +18,16 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
   }
   const localIdentName = '[name]__[local]___[hash:base64:5]'
   const styleLoader = { loader: 'style-loader', options: { sourceMap: true } }
-  const postCSSLoader = { loader: 'postcss-loader', options: { sourceMap: true } }
+  const postCSSLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true
+    }
+  }
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      importLoaders: 3,
+      importLoaders: 2,
       modules: cssModules,
       localIdentName,
       minimize: !__DEV__,
@@ -58,12 +63,12 @@ module.exports = ({ __DEV__, cssModules = true, extract = true }) => {
     const getCssLoaderInstance = () => {
       return {
         test: reg,
-        use: ExtractTextPlugin.extract({
+        use: _ExtractTextPlugin.extract({
           fallback: styleLoader,
           use: [
             ...(extract ? [] : [styleLoader]),
             cssLoader,
-            postCSSLoader,
+            // postCSSLoader,
             loader
           ]
         })

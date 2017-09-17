@@ -1,4 +1,5 @@
-const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./constants')
+import { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } from './constants'
+import { proxy } from './proxy'
 /**
  * 开发服务配置
  */
@@ -8,7 +9,7 @@ const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, _
 //  Base?, open?, useLocalIp?, openPage?, features?, compress?, proxy?, historyApiFallback?, s
 //  taticOptions?, setup?, stats?, reporter?, noInfo?, quiet?, serverSideRender?, index?, log?
 //  , warn? }
-module.exports = {
+export const devServer = {
   // useLocalIp: true,
   openPage: 'index.html',
   hot: true,
@@ -28,5 +29,5 @@ module.exports = {
   quiet: true, // 让dev server处于静默的状态启动(控制台中不输出打包的信息)
   noInfo: false, // set to false to see a list of every file being bundled.
   headers: { 'X-Custom-Header': 'yes' },
-  proxy: require('./proxy')
+  proxy
 }
