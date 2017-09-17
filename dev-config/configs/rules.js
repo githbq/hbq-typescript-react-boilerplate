@@ -3,8 +3,6 @@
  */
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const { __DEV__ } = require('./constants')
-const lessLoaderVars = {}
-const postCSSConfig = JSON.stringify(require('./utils').postCSSConfig);
 let rules = [ // 定义各种loader
   {
     test: /\.pug$/,
@@ -34,9 +32,10 @@ let rules = [ // 定义各种loader
   },
   ...require('./rules.css')({
     __DEV__,
-    lessLoaderVars,
-    postCSSConfig
-  }, true, !__DEV__),
+    cssModules: true,
+    extract: !__DEV__
+  }
+  ),
   //files
   {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -75,8 +74,8 @@ if (__DEV__) {
       loader: 'ts-loader',
       options: {
         jsx: true,
-        happyPackMode: true,
-        transpileOnly: true,
+        // happyPackMode: true,
+        // transpileOnly: true,
       }
     }
     ]

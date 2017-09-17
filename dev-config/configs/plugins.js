@@ -5,8 +5,9 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const WebpackMd5Hash = require('webpack-md5-hash')
-const utils = require('./utils')
+//webpack-md5-hash不需要再使用了 https://sebastianblade.com/using-webpack-to-achieve-long-term-cache/
+// const WebpackMd5Hash = require('webpack-md5-hash')
+const { postCSSConfig } = require('./utils')
 const { NODE_ENV, __DEV__ } = require('./constants')
 const devServer = require('./devServer')
 const CompressionPlugin = require('compression-webpack-plugin')
@@ -18,24 +19,9 @@ let plugins = [
   ...getHtmlPlugins(__DEV__),
   new FriendlyErrorsWebpackPlugin(),
   process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
-  new webpack.optimize.ModuleConcatenationPlugin(),
-  new WebpackMd5Hash(),
-  new webpack.NamedModulesPlugin(),
-  // Use NoErrorsPlugin for webpack 1.x 这个插件1.x版本以上不需要
-  // new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.BannerPlugin('This file is created by hbq'), // 生成文件时加上注释
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
     '__DEV__': JSON.stringify(__DEV__)
-  }),
-  // 抽离公共部分, 要了解CommonsChunkPlugin的原理, 首先要搞清楚chunk的概念
-  // CommonsChunkPlugin做的其实就是把公共模块抽出来, 可以单独生成一个新的文件, 也可以附加到已有的chunk上
-  // 同时还会加上webpack的runtime相关代码
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'common',
-    filename: 'common.js',
-    // 这个函数决定哪些模块会被放到vender.min.js中
-    minChunks: module => /node_modules/.test(module.resource)
   }),
   new CopyWebpackPlugin([{
     from: 'src/assets',
@@ -45,11 +31,16 @@ let plugins = [
   new ExtractTextPlugin('css/[name].css'),
 ]
 if (__DEV__) {
-  plugins = plugins.concat([
+  plugins = [
+    ...plugins,
+    new webpack.HashedModuleIdsPlugin(),
+    // Use NoErrorsPlugin for webpack 1.x 这个插件1.x版本以上不需要
+    // new webpack.NoEmitOnErrorsPlugin(),
+    //提取Loader定义到同一地方
     new webpack.LoaderOptionsPlugin({
       options: {
         context: '/',
-        postcss: utils.postCSSConfig,
+        postcss: () => postCSSConfig,
         stylus: {
           default: {
             use: [
@@ -58,10 +49,30 @@ if (__DEV__) {
           },
         },
       }
-    })
-  ])
+    }),
+  ]
 } else {
-  plugins = plugins.concat([
+  plugins = [
+    ...plugins,
+    // split vendor js into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      filename: 'common.js',
+      minChunks: function (module, count) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          /node_modules/.test(module.resource)
+        )
+      }
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new WebpackMd5Hash(),
+    new webpack.HashedModuleIdsPlugin(), //这个比 webpack.NamedModulesPlugin 更有用
+    // new webpack.NamedModulesPlugin(),
+    // 生成文件时加上注释
+    new webpack.BannerPlugin('This file is created by hbq'),
     new CompressionPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
@@ -89,14 +100,19 @@ if (__DEV__) {
     }),
     //提取Loader定义到同一地方
     new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
       options: {
         context: '/',
-        postcss: utils.postCSSConfig
+        postcss: () => postCSSConfig,
+        stylus: {
+          default: {
+            use: [
+
+            ],
+          },
+        },
       }
     }),
     new webpack.optimize.AggressiveMergingPlugin() //Merge chunks
-  ])
+  ]
 }
 module.exports = plugins
