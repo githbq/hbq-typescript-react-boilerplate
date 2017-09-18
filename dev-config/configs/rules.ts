@@ -21,7 +21,7 @@ let _rules = [ // 定义各种loader
       emitErrors: true,
       failOnHint: true,
       typeCheck: false,
-      fix: true,
+      fix: false,
     }
   },
   {
