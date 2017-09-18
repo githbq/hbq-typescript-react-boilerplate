@@ -12,6 +12,7 @@ import { proxy } from './proxy'
 export const devServer = {
   // useLocalIp: true,
   openPage: 'index.html',
+  overlay: true,
   hot: true,
   open: true,
   port: Math.floor(Math.random() * 1001) + 7000,
