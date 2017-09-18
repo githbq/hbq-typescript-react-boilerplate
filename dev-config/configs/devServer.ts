@@ -14,7 +14,7 @@ export const devServer = {
   openPage: 'index.html',
   hot: true,
   open: true,
-  port: 7001,
+  port: Math.floor(Math.random() * 1001) + 7000,
   contentBase: BUILD_PATH,
   publicPath: PUBLIC_PATH,
   inline: true,
