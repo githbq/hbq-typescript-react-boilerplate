@@ -36,8 +36,7 @@ let _rules = [ // 定义各种loader
     __DEV__,
     cssModules: true,
     extract: !__DEV__
-  }
-  ),
+  }),
   //files
   {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
