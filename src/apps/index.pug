@@ -1,0 +1,82 @@
+
+doctype html
+html
+  head
+      title 页面列表
+      if htmlWebpackPlugin.options.data.favIcon
+        link(rel="shorticon icon" type="image/x-icon" href=htmlWebpackPlugin.options.data.favIcon)
+      meta(charset="utf-8")
+      meta(http-equiv="X-UA-Compatible" content="IE=edge")
+      meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+  body
+    div.main-container
+      div.header #{htmlWebpackPlugin.options.data.hello}
+      div.content
+        ul.html-container
+          each path in htmlWebpackPlugin.options.data.htmlPaths
+            li.html-item
+              a(href=path target="main-frame") #{path}
+              a.new(href=path target="blank" title="点击打开新页面") new
+        iframe.main-iframe(name="main-frame")
+    style.
+      *{
+        margin:0;
+        padding:0;
+        list-style:none;
+        box-sizing:border-box;
+        overflow:hidden;
+      }
+      .main-container{
+        border:5px solid lightblue;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+      }
+      .content{
+        flex:1;
+        border:2px solid gray;
+        display:flex;
+      }
+      .header{
+        flex:0 0 auto;
+      }
+      ul.html-container{
+        background-color:#eff4f2;
+        flex:0 0 30vh;
+        height:100%;
+        width:40%;
+        border:5px solid ##dcdcdc;
+        overflow-y:auto;
+      }
+      .html-item{
+        padding:5px;
+        font-size:18px;
+        font-weight:bold;
+      }
+      .html-item a:link{
+        color:blue;
+      }
+      .html-item a:visited{
+        font-size:20px;
+        color:green;
+      }
+      .html-item a:hover{
+        background-color:#dee7ea;
+        color:#f75c5c;
+      }
+      .html-item a:active{
+        color:white;
+      }
+      .main-iframe{
+        flex:1;
+        height:100%;
+        width:59%;
+        border:5px solid #91dbf0;
+      }
+      .html-item a.new {
+        font-style: italic;
+        margin-left:14px;
+        color:red;
+        font-size:14px;
+      }
+
