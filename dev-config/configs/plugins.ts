@@ -8,6 +8,7 @@ import * as CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as  CompressionPlugin from 'compression-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
+import * as  ProgressPlugin from 'progress-webpack-plugin'
 //webpack-md5-hash不需要再使用了 https://sebastianblade.com/using-webpack-to-achieve-long-term-cache/
 // const WebpackMd5Hash = require('webpack-md5-hash')
 import { postCSSConfig } from './utils'
@@ -17,6 +18,7 @@ import { getHtmlPlugins } from './plugins.html'
 
 // _plugins
 let _plugins = [
+  new ProgressPlugin(true),
   ...getHtmlPlugins(__DEV__),
   new FriendlyErrorsWebpackPlugin(),
   process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
