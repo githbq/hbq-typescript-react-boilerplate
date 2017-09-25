@@ -11,6 +11,7 @@ import { proxy } from './proxy'
 //  , warn? }
 export const devServer = {
   // useLocalIp: true,
+  host: '0.0.0.0',
   openPage: 'index.html',
   overlay: true,
   hot: true,
