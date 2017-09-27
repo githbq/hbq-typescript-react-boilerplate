@@ -6,7 +6,7 @@ import * as path from 'path'
 import { BUILD_PATH, __DEV__, devServer, entry, alias, rules, plugins } from './configs'
 
 //设置开发时源代码映射
-const devtool: webpack.Options.Devtool = __DEV__ ? 'cheap-module-source-map' : 'source-map'
+const devtool: webpack.Options.Devtool = __DEV__ ? 'cheap-module-eval-source-map' : 'source-map'
 const jsPrefixPath = 'js'
 // const webpackConfig: webpack.Configuration = {
 const webpackConfig = {
