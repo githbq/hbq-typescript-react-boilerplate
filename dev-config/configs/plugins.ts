@@ -24,6 +24,8 @@ let _plugins = [
   new ProgressPlugin(true),
   ...getHtmlPlugins(__DEV__),
   new FriendlyErrorsWebpackPlugin(),
+  // new webpack.NamedModulesPlugin(),
+  new webpack.HashedModuleIdsPlugin(),
   process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
@@ -56,7 +58,6 @@ let _plugins = [
 if (__DEV__) {
   _plugins = [
     ..._plugins,
-    new webpack.HashedModuleIdsPlugin(),
     // Use NoErrorsPlugin for webpack 1.x 这个插件1.x版本以上不需要
     // new webpack.NoEmitOnErrorsPlugin(),
     //提取Loader定义到同一地方
@@ -79,8 +80,6 @@ if (__DEV__) {
     ..._plugins,
     new webpack.optimize.ModuleConcatenationPlugin(),
     // new WebpackMd5Hash(),
-    new webpack.HashedModuleIdsPlugin(), //这个比 webpack.NamedModulesPlugin 更有用
-    // new webpack.NamedModulesPlugin(),
     // 生成文件时加上注释
     new webpack.BannerPlugin('This file is created by hbq'),
     new CompressionPlugin({
