@@ -15,8 +15,10 @@ html
         ul.html-container
           each path in htmlWebpackPlugin.options.data.htmlPaths
             li.html-item
-              a(href=path target="main-frame") #{path}
+              a.link(href="javascript:void(0)" data-href=path target="main-frame") #{path}
               a.new(href=path target="blank" title="点击打开新页面") new
+          li.qr-container
+            canvas#qrcode
         iframe.main-iframe(name="main-frame")
     style.
       *{
@@ -47,6 +49,10 @@ html
         width:40%;
         border:5px solid #dcdcdc;
         overflow-y:auto;
+        position:relative;
+      }
+      ul.html-container li{
+        width:100%;
       }
       .html-item{
         padding:5px;
@@ -78,5 +84,10 @@ html
         margin-left:14px;
         color:red;
         font-size:14px;
+      }
+      .qr-container{
+        text-align:center;
+        position:absolute;
+        bottom:0px;
       }
 
