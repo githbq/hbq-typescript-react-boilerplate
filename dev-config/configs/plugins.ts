@@ -8,18 +8,20 @@ import * as CopyWebpackPlugin from 'copy-webpack-plugin'
 import * as  CompressionPlugin from 'compression-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
+import * as CleanWebpackPlugin from 'clean-webpack-plugin'
 import * as  ProgressPlugin from 'progress-webpack-plugin'
 //在 vscode 上显示webpack进度 需要在vscode上安装插件webpack-progress
 import * as  BitBarWebpackProgressPlugin from 'bitbar-webpack-progress-plugin'
 //webpack-md5-hash不需要再使用了 https://sebastianblade.com/using-webpack-to-achieve-long-term-cache/
 // const WebpackMd5Hash = require('webpack-md5-hash')
 import { postCSSConfig } from './utils'
-import { NODE_ENV, __DEV__ } from './constants'
+import { NODE_ENV, __DEV__, ROOT_PATH } from './constants'
 import { devServer } from './devServer'
 import { getHtmlPlugins } from './plugins.html'
 
 // _plugins
 let _plugins = [
+  new CleanWebpackPlugin(['dist', 'build'], { root: ROOT_PATH }),
   new BitBarWebpackProgressPlugin(),
   new ProgressPlugin(true),
   ...getHtmlPlugins(__DEV__),
