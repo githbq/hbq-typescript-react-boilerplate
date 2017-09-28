@@ -41,7 +41,7 @@
       }
     },
     "build": {
-      "command": "webpack --config ./dev-config/webpack.config.ts --progress --display-error-details"
+      "command": "webpack --config ./dev-config/webpack.config.ts --progress --hide-modules --display-error-details"
     },
     "build:dev": {
       "command": "better-npm-run build",
