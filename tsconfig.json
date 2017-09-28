@@ -1,49 +1,33 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "jsx": "react",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "alwaysStrict": true,
-    "sourceMap": true,
-    "noEmit": false,
-    "noEmitHelpers": true,
-    "importHelpers": true,
-    "strictNullChecks": false,
-    "allowUnreachableCode": true,
-    "lib": [
-      "es2017",
-      "dom"
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "alwaysStrict": true,
+        "sourceMap": true,
+        "noEmit": false,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "strictNullChecks": false,
+        "allowUnreachableCode": true,
+        "lib": ["es2017", "dom"],
+        "typeRoots": ["node_modules/@types"],
+        "types": ["node", "react", "webpack"],
+        "outDir": "./build",
+        "rootDir": "./",
+        "baseUrl": "./",
+        "paths": {"@/*": ["src/*"], "*": ["*"]}
+    },
+    "exclude": [
+        "node_modules",
+        "build",
+        "dist",
+        "**/*.test.ts",
+        "temp"
     ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "node",
-      "react",
-      "webpack"
-    ],
-    "outDir": "./build",
-    "rootDir": "./",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "*": [
-        "*"
-      ]
-    }
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "dist",
-    "**/*.test.ts",
-    "temp"
-  ],
-  "compileOnSave": false,
-  "buildOnSave": false
+    "compileOnSave": false,
+    "buildOnSave": false
 }
