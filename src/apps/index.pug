@@ -11,11 +11,12 @@ html
   body
     div.main-container
       div.header #{htmlWebpackPlugin.options.data.hello}
+      canvas#qrcode
       div.content
         ul.html-container
           each path in htmlWebpackPlugin.options.data.htmlPaths
             li.html-item
-              a(href=path target="main-frame") #{path}
+              a.link(data-href=path target="main-frame") #{path}
               a.new(href=path target="blank" title="点击打开新页面") new
         iframe.main-iframe(name="main-frame")
     style.
