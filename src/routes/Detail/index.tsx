@@ -7,7 +7,7 @@ import Detail from '@/components/Detail'
 export default class extends React.Component {
   render() {
     return <div className='demo-route'>
-      this is detail-route
+      this is detail-route  0000 4545
       <Detail />
     </div>
   }
