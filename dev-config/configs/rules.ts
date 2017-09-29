@@ -2,26 +2,37 @@
  * 文件处理
  */
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin'
-import { __DEV__ } from './constants'
+import { __DEV__, APP_PATH } from './constants'
 import { getCssRules } from './rules.css'
 
 let _rules = [ // 定义各种loader
+  {
+    enforce: 'pre',
+    test: /\.js$/,
+    loader: 'source-map-loader'
+  },
+  {
+    enforce: 'pre',
+    test: /\.tsx?$/,
+    exclude: /(node_modules)/,
+    include: APP_PATH,
+    use: [
+      {
+        loader: 'tslint-loader',
+        options: {
+          emitErrors: true,
+          failOnHint: true,
+          typeCheck: false,
+          fix: false,
+        }
+      }
+    ]
+  },
   {
     test: /\.pug$/,
     loader: 'pug-loader',
     options: {
       pretty: true
-    }
-  },
-  {
-    test: /\.tsx?$/,
-    enforce: 'pre',
-    loader: 'tslint-loader',
-    options: {
-      emitErrors: true,
-      failOnHint: true,
-      typeCheck: false,
-      fix: false,
     }
   },
   {
@@ -68,9 +79,10 @@ if (__DEV__) {
   _rules.push({
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
+    include: APP_PATH,
     use: [
       {
-        loader: 'react-hot-loader'
+        loader: 'react-hot-loader/webpack'
       },
       // {
       //   loader: 'ts-loader',
@@ -92,6 +104,7 @@ if (__DEV__) {
   _rules.push({
     test: /\.tsx?$/,
     exclude: /(node_modules)/,
+    include: APP_PATH,
     use: [
       // {
       //   loader: 'ts-loader',

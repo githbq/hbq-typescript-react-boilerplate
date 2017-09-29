@@ -15,7 +15,12 @@
         "allowUnreachableCode": true,
         "lib": ["es2017", "dom"],
         "typeRoots": ["node_modules/@types"],
-        "types": ["node", "react", "webpack"],
+        "types": [
+            "node",
+            "react",
+            "webpack",
+            "webpack-env"
+        ],
         "outDir": "./build",
         "rootDir": "./",
         "baseUrl": "./",

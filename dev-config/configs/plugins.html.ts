@@ -2,7 +2,7 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 import { root, pathTool, TEMPLATE_PATH, TEMPLATE_PATH_PUG } from './constants'
 import { templateSuffix, regTemplate, entry } from './entry'
 import globalConfig from './globalConfig'
-const chunks = ['vendor', 'common']
+const chunks = ['patch', 'vendor', 'common']
 //createHtmlPlugin
 function createHtmlPlugin(name, isDev = false, template = null) {
   //默认使用 ./index.template.pug 模板

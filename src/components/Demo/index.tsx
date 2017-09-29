@@ -5,6 +5,7 @@ interface State {
   abc: number
 }
 interface Props {
+  match: any
 }
 /**
  * 组件demo
@@ -17,7 +18,8 @@ export default class extends React.Component<Props, State> {
     return (
       <div>
         <h1 className={styles['demo-component']}>
-          <a href='xx/detail.html'>跳转到详情页面222</a>
+          <a href='demo2.html'>跳转到demo22222</a>
+          <b>{JSON.stringify(this.props.match.params)}</b>
         </h1>
       </div>
     )

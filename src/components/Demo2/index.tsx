@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './style'
+import * as styles from './style.styl'
 
 interface State {
   abc: number
@@ -16,8 +16,8 @@ export default class extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <h1 className='demo-component'>
-          xx/components/Demo
+        <h1 className={styles['demo-component']}>
+          <a href='demo.html'>跳转到demo</a>
         </h1>
       </div>
     )

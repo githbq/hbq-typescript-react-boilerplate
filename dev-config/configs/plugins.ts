@@ -26,8 +26,8 @@ let _plugins = [
   new ProgressPlugin(true),
   ...getHtmlPlugins(__DEV__),
   new FriendlyErrorsWebpackPlugin(),
-  // new webpack.NamedModulesPlugin(),
-  new webpack.HashedModuleIdsPlugin(),
+  new webpack.NamedModulesPlugin(),
+  // new webpack.HashedModuleIdsPlugin(),
   process.env.analysis ? new BundleAnalyzerPlugin() : () => { },
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
@@ -38,7 +38,7 @@ let _plugins = [
   // split vendor js into its own file
   new webpack.optimize.CommonsChunkPlugin({
     name: 'common',
-    filename: 'js/[name].js',
+    filename: `js/[name]${!__DEV__ ? '.min' : ''}.js`,
     minChunks: function (module, count) {
       // any required modules inside node_modules are extracted to vendor
       return (
