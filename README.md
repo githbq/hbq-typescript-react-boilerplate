@@ -2,7 +2,8 @@
   - support  mutilple entry mode
   - webpack.config write by typescript with `.ts` files
   - React16 + ReactRouterV4 + webpack3.6.0
-## 赶紧来体验 webpack3 + react 16 + react-routerV4 吧
+## 赶紧来体验 `webpack3` + `react 16` + `react-routerV4` + `typescript2.5` 极速开发吧
+
 ## Install
 ```
 git clone --depth=1  https://github.com/githbq/hbq-typescript-react-boilerplate.git
