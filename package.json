@@ -123,7 +123,7 @@
     "webpack-dev-server": "^2.7.1"
   },
   "engines": {
-    "node": ">=8.4"
+    "node": ">=7.6"
   },
   "repository": "https://github.com/githbq/hbq-typescript-react-boilerplate.git",
   "license": "MIT"
