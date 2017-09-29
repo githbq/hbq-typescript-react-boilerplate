@@ -53,13 +53,7 @@ export const entry = {
   //只包含入口tsx
   apps: {
     index: './src/index',
-    ...(
-      __DEV__ ?
-        {
-          'patch': 'react-hot-loader/patch'
-        }
-        : {}
-    ),
+    ...(__DEV__ ? { patch: 'react-hot-loader/patch' } : {}),
     ...entryObject
   },
   //包含入口tsx  以及 template

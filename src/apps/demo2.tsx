@@ -17,8 +17,8 @@ ReactDOM.render(
 
 // Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('@/routes/Demo', () => {
-    const NextApp = require<{ default: typeof App }>('@/routes/Demo').default
+  module.hot.accept('@/routes/Demo2', () => {
+    const NextApp = require<{ default: typeof App }>('@/routes/Demo2').default
     ReactDOM.render(
       <AppContainer>
         <NextApp />

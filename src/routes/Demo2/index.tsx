@@ -8,7 +8,7 @@ export default class extends React.Component<{}, {}> {
 
   render() {
     return <div className={styles['demo-route']}>
-      this is demo-route2222 hello everyone
+      this is demo-route2222 hello everyone  1
              <DemoComponent2 />
     </div>
   }

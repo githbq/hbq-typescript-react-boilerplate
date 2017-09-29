@@ -2,11 +2,34 @@
 # yarn lockfile v1
 
 
+"@types/history@*":
+  version "4.6.0"
+  resolved "https://registry.npmjs.org/@types/history/-/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
+
 "@types/node@*", "@types/node@^8.0.28":
   version "8.0.28"
   resolved "https://registry.npmjs.org/@types/node/-/node-8.0.28.tgz#86206716f8d9251cf41692e384264cbd7058ad60"
 
-"@types/react@^16.0.7":
+"@types/prop-types@^15.5.2":
+  version "15.5.2"
+  resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.5.2.tgz#3c6b8dceb2906cc87fe4358e809f9d20c8d59be1"
+
+"@types/react-router-dom@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-4.0.8.tgz#a9731bf35d053cdd27053baacc19e505d74514f3"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "4.0.15"
+  resolved "https://registry.npmjs.org/@types/react-router/-/react-router-4.0.15.tgz#be8aaefc20afd968a5dbcffcf09060e6c2e8746e"
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.0.7":
   version "16.0.7"
   resolved "https://registry.npmjs.org/@types/react/-/react-16.0.7.tgz#f85b6c33c988a1631e2f32fedae71ec6d9718a0d"
 
@@ -5043,7 +5066,7 @@ react-router@^4.2.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react@16.0.0:
+react@^16.0.0:
   version "16.0.0"
   resolved "https://registry.npmjs.org/react/-/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
   dependencies:

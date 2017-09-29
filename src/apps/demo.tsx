@@ -5,18 +5,6 @@ import '@/vendors'
 import * as  React from 'react'
 import * as  ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-
-//common
-
-import * as fastClick from 'fastclick'
-fastClick.attach(document.body)
-
-//end common
-
-
-
-
-
 import App from '@/routes/Demo'
 const rootEl = document.getElementById('root')
 
