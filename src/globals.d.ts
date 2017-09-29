@@ -15,3 +15,11 @@ declare module '*.styl' {
   const content: any
   export default content
 }
+
+interface SystemJS {
+  import: (path?: string) => Promise<any>
+}
+// typescript code spliting 使用 import()无效,使用System.import()有效
+//Usage: = await System.import(/* webpackChunkName: "qrcode" */ 'qrcode')
+declare var System: SystemJS
+
