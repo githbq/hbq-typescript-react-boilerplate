@@ -39,12 +39,14 @@ let _plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: 'common',
     filename: `js/[name]${!__DEV__ ? '.min' : ''}.js`,
-    minChunks: function (module, count) {
+    minChunks(module, count) {
+      console.log(module)
       // any required modules inside node_modules are extracted to vendor
       return (
         // module.resource &&
         // /\.js$/.test(module.resource) &&
         /node_modules/.test(module.resource)
+        && !/qrcode/i.test(module.resource)
       )
     }
   }),
