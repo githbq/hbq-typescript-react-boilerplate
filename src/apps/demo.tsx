@@ -5,6 +5,11 @@ import '@/vendors'
 import * as  React from 'react'
 import * as  ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+
+//解决移动端300毫秒延迟
+import * as  fastClick from 'fastclick'
+fastClick.attach(document.body)
+
 import App from '@/routes/Demo'
 const rootEl = document.getElementById('root')
 
