@@ -40,7 +40,6 @@ let _plugins = [
     name: 'common',
     filename: `js/[name]${!__DEV__ ? '.min' : ''}.js`,
     minChunks(module, count) {
-      console.log(module)
       // any required modules inside node_modules are extracted to vendor
       return (
         // module.resource &&
