@@ -1,6 +1,8 @@
 # A nice `typescript+react` development framework by hbq
   - support  mutilple entry mode
-  - webpackconfig write with typescript  `.ts`
+  - webpack.config write by typescript with `.ts` files
+  - React16 + ReactRouterV4 + webpack3.6.0
+## 赶紧来体验 webpack3 + react 16 + react-routerV4 吧
 ## Install
 ```
 git clone --depth=1  https://github.com/githbq/hbq-typescript-react-boilerplate.git
@@ -79,3 +81,4 @@ iclone init -t ts-react -n [projectName]
 6. 添加 `.pug` 模板 (比html模板更简洁高效)
 7. 添加 `.styl` stylus 样式预处理器支持
 8. `webpack-dev-server` 添加 `host: '0.0.0.0'` 配置局域网内可访问
+9. 全新升级到 `react16` +  `react-router V4`

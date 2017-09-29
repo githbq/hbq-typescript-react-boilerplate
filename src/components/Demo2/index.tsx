@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Route, Link, match } from 'react-router-dom'
-import * as styles from './style.styl'
+
 import * as PropTypes from 'prop-types'
+import * as styles from './style.styl'
 interface State {
   abc: number
 }
@@ -23,9 +24,9 @@ export default class extends React.Component<Props, State> {
     return (
       <div>
         <h1 className={styles['demo-component']}>
-          demo11111
-          <a href='demo2.html'>跳转到demo22222</a>
-          <b>{JSON.stringify(this.props.match.params)}</b>
+          demo2222
+          <a href='demo.html'>跳转到demo</a>
+          <b>{JSON.stringify(this.props.match ? this.props.match.params : {})}</b>
         </h1>
       </div>
     )

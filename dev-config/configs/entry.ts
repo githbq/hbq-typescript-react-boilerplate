@@ -3,7 +3,7 @@
  */
 import * as  pathTool from 'path'
 import * as  color from 'cli-color'
-import { ROOT_PATH, APP_PATH } from './constants'
+import { ROOT_PATH, APP_PATH, __DEV__ } from './constants'
 
 import * as  globby from 'globby'
 const appPath = './src/apps'
@@ -53,6 +53,7 @@ export const entry = {
   //只包含入口tsx
   apps: {
     index: './src/index',
+    ...(__DEV__ ? { patch: 'react-hot-loader/patch' } : {}),
     ...entryObject
   },
   //包含入口tsx  以及 template

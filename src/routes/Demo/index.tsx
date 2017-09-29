@@ -1,27 +1,46 @@
 /**
  * 路由页面
  */
-import * as styles from './style.less'
+
 import * as React from 'react'
+import { Route, Router, Switch } from 'react-router-dom'
+
+import createHistory from 'history/createHashHistory'
+const history = createHistory()
+
+import * as styles from './style.less'
+
 import DemoComponent from '@/components/Demo'
-export interface State {
-  list: Array<any>
-}
-export interface Props {
-  list: Array<any>
-}
-export default class extends React.Component<Props, State> {
-  state = { list: [1, 2, 34, 34] }
-  static defaultProps = {
-    list: [6, 7, 87, 8, 4]
-  }
+import DemoComponent2 from '@/components/Demo2'
+export default class extends React.Component {
   render() {
-    let a = 1111
-    console.log(this.state)
-    return <div className={styles['demo-route']}>
-      <input type='text' />
-      this is demo-route hello everyone
-             <DemoComponent />
-    </div>
+    return (
+      <Router history={history}>
+        <Route render={({ location }) => {
+          return (
+            <Switch>
+              <Route component={DemoComponent}
+                exact
+                location={location}
+                path='/'
+              />
+              <Route component={DemoComponent}
+                location={location}
+                path='/aaa/:aaa'
+              />
+              <Route component={DemoComponent2}
+                location={location}
+                path='/aaa'
+              />
+              <Route component={DemoComponent}
+                location={location}
+                path='/bbb'
+              />
+            </Switch>
+          )
+        }}
+        />
+      </Router>
+    )
   }
 }
