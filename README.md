@@ -27,27 +27,31 @@ iclone init -t ts-react -n [projectName]
 ### catalog
 
 ```
+├── LICENSE
 ├── README.md
 ├── build
+|  ├── dev-config
+|  └── src
 ├── dev-config
 |  ├── configs
 |  ├── index.template.html
-|  ├── lite-server-config.js
+|  ├── index.template.pug
+|  ├── lite-server-config.json
 |  ├── readme.md
-|  └── webpack.config.js
-├── dist
+|  └── webpack.config.ts
 ├── docs
 |  └── README.md
 ├── package.json
 ├── src
+|  ├── apps
 |  ├── assets
 |  ├── common
 |  ├── components
-|  ├── apps
 |  ├── globals.d.ts
 |  ├── index.tsx
 |  ├── routes
-|  └── utils
+|  ├── utils
+|  └── vendors.ts
 ├── tsconfig.json
 ├── tslint.json
 └── yarn.lock
