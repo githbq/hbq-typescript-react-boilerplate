@@ -19,7 +19,6 @@ export default class extends React.Component<Props, State> {
     super(props)
   }
   render() {
-    debugger
     return (
       <div>
         <h1 className={styles['demo-component']}>

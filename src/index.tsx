@@ -25,7 +25,7 @@ import 'tslib'
     const target = n.getAttribute('target')
     n.onclick = () => {
       window.open(href, target)
-      refreshQRCode('http://10.252.213.148:7703' + '/' + href.replace(/\\/g, '/'))
+      refreshQRCode(location.origin + '/' + href.replace(/\\/g, '/'))
     }
   })
 })()
