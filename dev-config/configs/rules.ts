@@ -6,11 +6,11 @@ import { __DEV__, APP_PATH } from './constants'
 import { getCssRules } from './rules.css'
 
 let _rules = [ // 定义各种loader
-  {
-    enforce: 'pre',
-    test: /\.js$/,
-    loader: 'source-map-loader'
-  },
+  // {
+  //   enforce: 'pre',
+  //   test: /\.js$/,
+  //   loader: 'source-map-loader'
+  // },
   {
     enforce: 'pre',
     test: /\.tsx?$/,

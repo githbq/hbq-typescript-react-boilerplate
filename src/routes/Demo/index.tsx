@@ -5,17 +5,19 @@
 import * as React from 'react'
 import { Route, Router, Switch } from 'react-router-dom'
 
-import createHistory from 'history/createHashHistory'
-const history = createHistory()
 
 import * as styles from './style.less'
 
 import DemoComponent from '@/components/Demo'
 import DemoComponent2 from '@/components/Demo2'
-export default class extends React.Component {
+
+interface Props {
+  history: any
+}
+export default class extends React.Component<Props, {}> {
   render() {
     return (
-      <Router history={history}>
+      <Router history={this.props.history}>
         <Route render={({ location }) => {
           return (
             <Switch>

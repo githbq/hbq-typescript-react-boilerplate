@@ -3,14 +3,23 @@
  */
 import '@/vendors'
 import * as  React from 'react'
-import * as  ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+
+//解决移动端300毫秒延迟
+import * as  fastClick from 'fastclick'
+fastClick.attach(document.body)
+
 import App from '@/routes/Demo2'
 const rootEl = document.getElementById('root')
 
-ReactDOM.render(
+//history
+import createHistory from 'history/createHashHistory'
+const history = createHistory()
+
+render(
   <AppContainer>
-    <App />
+    <App history={history} />
   </AppContainer>
   , rootEl
 )
@@ -19,9 +28,9 @@ ReactDOM.render(
 if (module.hot) {
   module.hot.accept('@/routes/Demo2', () => {
     const NextApp = require<{ default: typeof App }>('@/routes/Demo2').default
-    ReactDOM.render(
+    render(
       <AppContainer>
-        <NextApp />
+        <NextApp history={history} />
       </AppContainer>
       ,
       rootEl
