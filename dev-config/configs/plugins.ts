@@ -14,6 +14,8 @@ import * as  ProgressPlugin from 'progress-webpack-plugin'
 import * as  BitBarWebpackProgressPlugin from 'bitbar-webpack-progress-plugin'
 //webpack-md5-hash不需要再使用了 https://sebastianblade.com/using-webpack-to-achieve-long-term-cache/
 // const WebpackMd5Hash = require('webpack-md5-hash')
+import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
+
 import { postCSSConfig } from './utils'
 import { NODE_ENV, __DEV__, ROOT_PATH } from './constants'
 import { devServer } from './devServer'
@@ -21,6 +23,12 @@ import { getHtmlPlugins } from './plugins.html'
 
 // _plugins
 let _plugins = [
+  new ScriptExtHtmlWebpackPlugin({
+    sync: /polyfills|vendor|common/,
+    defaultAttribute: 'async',
+    preload: [/polyfills|vendor|index|common/],
+    prefetch: [/chunk/]
+  }),
   new CleanWebpackPlugin(['dist', 'build'], { root: ROOT_PATH }),
   new BitBarWebpackProgressPlugin(),
   new ProgressPlugin(true),

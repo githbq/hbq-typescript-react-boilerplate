@@ -102,6 +102,7 @@
     "react-hot-loader": "next",
     "require-dir": "^0.3.1",
     "rimraf": "^2.6.1",
+    "script-ext-html-webpack-plugin": "^1.8.5",
     "source-map-loader": "^0.2.1",
     "strip-loader": "^0.1.2",
     "style-loader": "0.13.1",
