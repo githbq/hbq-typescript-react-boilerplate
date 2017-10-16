@@ -10,7 +10,7 @@ const devtool: webpack.Options.Devtool = __DEV__ ? 'cheap-module-eval-source-map
 const jsPrefixPath = 'js'
 // const webpackConfig: webpack.Configuration = {
 const webpackConfig = {
-  devtool: 'source-map',
+  devtool,
   devServer,
   entry: entry.apps,
   output: { // 输出的目录和文件名
