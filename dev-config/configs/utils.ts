@@ -2,7 +2,6 @@
  * 其他配置或工具
  */
 import * as  autoprefixer from 'autoprefixer'
-import * as flexibility from 'postcss-flexibility'
 
 //使用postcss作为默认的CSS编译器
 export const postCSSConfig = [
@@ -18,6 +17,5 @@ export const postCSSConfig = [
       'android >= 4.4',
       'bb >= 10'
     ]
-  }),
-  flexibility
+  })
 ]

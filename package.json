@@ -93,7 +93,6 @@
     "less": "2.7.1",
     "less-loader": "2.2.3",
     "lite-server": "^2.3.0",
-    "postcss-flexibility": "^1.1.0",
     "postcss-loader": "^1.3.3",
     "progress-webpack-plugin": "^0.0.12",
     "prop-types": "^15.6.0",

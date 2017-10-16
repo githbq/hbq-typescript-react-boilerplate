@@ -1,7 +1,7 @@
 // import * as QRCode from 'qrcode'
 import 'tslib'
 (async () => {
-  const QRCode = await System.import(/* webpackChunkName: "qrcode" */ 'qrcode')
+  const QRCode = await System.import(/* webpackChunkName: "qrcode23232" */ 'qrcode')
   const qrcodeDom = document.getElementById('qrcode')
   qrcodeDom.title = '点击关闭二维码'
   qrcodeDom.onclick = (e) => {
