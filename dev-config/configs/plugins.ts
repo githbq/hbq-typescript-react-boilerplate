@@ -16,7 +16,6 @@ import * as  BitBarWebpackProgressPlugin from 'bitbar-webpack-progress-plugin'
 // const WebpackMd5Hash = require('webpack-md5-hash')
 import * as ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin'
 
-import { postCSSConfig } from './utils'
 import { NODE_ENV, __DEV__, ROOT_PATH } from './constants'
 import { devServer } from './devServer'
 import { getHtmlPlugins } from './plugins.html'
@@ -75,7 +74,6 @@ if (__DEV__) {
     new webpack.LoaderOptionsPlugin({
       options: {
         context: '/',
-        postcss: () => postCSSConfig,
         stylus: {
           default: {
             use: [
@@ -122,7 +120,6 @@ if (__DEV__) {
     new webpack.LoaderOptionsPlugin({
       options: {
         context: '/',
-        postcss: () => postCSSConfig,
         stylus: {
           default: {
             use: [

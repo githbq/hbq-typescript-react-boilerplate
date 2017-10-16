@@ -1,6 +1,7 @@
 /**
  * 程序的入口
  */
+import '@/common/main.less'
 import '@/vendors'
 import * as  React from 'react'
 import { render } from 'react-dom'
