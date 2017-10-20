@@ -13,10 +13,14 @@ interface Props {
  */
 export default class extends React.Component<Props, State> {
   static contextTypes = {
-    match: PropTypes.any
+    match: PropTypes.any,
+    router: PropTypes.any
   }
   constructor(props) {
     super(props)
+  }
+  componentDidMount() {
+
   }
   render() {
     return (
