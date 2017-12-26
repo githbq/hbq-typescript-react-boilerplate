@@ -9,7 +9,12 @@ export const postCSSConfig = [
   // px2rem({ remUnit: 75 }),
   autoprefixer({
     browsers: [
-      '> 5%'
+      'last 3 versions',
+      'ie >= 9',
+      'ff >= 30',
+      'chrome >= 34',
+      'safari >= 6',
+      'opera >= 12.1'
     ]
   })
 ]
