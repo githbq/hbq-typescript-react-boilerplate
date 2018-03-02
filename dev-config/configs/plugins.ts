@@ -5,7 +5,7 @@
 import * as webpack from 'webpack'
 import * as ExtractTextPlugin from 'extract-text-webpack-plugin'
 import * as CopyWebpackPlugin from 'copy-webpack-plugin'
-import * as  CompressionPlugin from 'compression-webpack-plugin'
+// import * as  CompressionPlugin from 'compression-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
 import * as CleanWebpackPlugin from 'clean-webpack-plugin'
@@ -91,13 +91,13 @@ if (__DEV__) {
     // new WebpackMd5Hash(),
     // 生成文件时加上注释
     new webpack.BannerPlugin('This file is created by hbq'),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0,
-    }),
+    // new CompressionPlugin({
+    //   asset: '[path].gz[query]',
+    //   algorithm: 'gzip',
+    //   test: /\.js$|\.css$|\.html$/,
+    //   threshold: 10240,
+    //   minRatio: 0,
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       // 最紧凑的输出
