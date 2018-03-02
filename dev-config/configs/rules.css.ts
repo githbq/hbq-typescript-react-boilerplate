@@ -32,7 +32,10 @@ export const getCssRules = ({ __DEV__, cssModules = true, extract = true }) => {
       importLoaders: 2,
       modules: cssModules,
       localIdentName,
-      minimize: !__DEV__,
+      // minimize: !__DEV__,
+      // 压缩由loaderOption Plugin控制这里统一为 false
+      // 否则会出现丢失 display:-webkit-flex;问题
+      minimize: false,
       sourceMap: true
     }
   }
