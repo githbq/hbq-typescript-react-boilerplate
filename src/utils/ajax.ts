@@ -90,7 +90,7 @@ export default {
     put(url, options) {
         return this.request(url, { ...options, method: 'put' })
     },
-    deleted(url, options) {
-        return this.request(url, { ...options, method: 'deleted' })
+    delete(url, options) {
+        return this.request(url, { ...options, method: 'delete' })
     }
 }
