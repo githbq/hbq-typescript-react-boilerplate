@@ -63,7 +63,7 @@ export const getCssRules = ({ __DEV__, cssModules = true, extract = true }) => {
     }
   }
 
-  let getReulsByType = (type) => {
+  let getRulesByType = (type) => {
     const { reg, loader } = regMap[type]
     const getCssLoaderInstance = () => {
       return {
@@ -91,7 +91,7 @@ export const getCssRules = ({ __DEV__, cssModules = true, extract = true }) => {
     ]
   }
   return [
-    ...getReulsByType('less'),
-    ...getReulsByType('stylus')
+    ...getRulesByType('less'),
+    ...getRulesByType('stylus')
   ]
 }
