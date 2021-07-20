@@ -11,7 +11,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import * as ScriptExtHtmlWebpackPlugin from "script-ext-html-webpack-plugin";
 
-import { NODE_ENV, __DEV__, ROOT_PATH } from "./constants";
+import { __DEV__, BUILD_PATH, pathTool, STATIC_PATH, ROOT_PATH } from "./constants";
 import { getHtmlPlugins } from "./plugins.html";
 
 import { resolveClientEnv } from "./dotenv";
@@ -37,8 +37,10 @@ let _plugins = [
 
   new CopyWebpackPlugin([
     {
-      from: "public",
-      to: "assets",
+      from: STATIC_PATH,
+      to: BUILD_PATH,
+      toType: "dir",
+      ignore: pathTool.relative(ROOT_PATH, STATIC_PATH) + "/*.html",
     },
   ]),
 ];
