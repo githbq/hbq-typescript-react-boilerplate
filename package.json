@@ -4,127 +4,90 @@
   "description": "react typescript webpack2",
   "author": "hbqhbq123@qq.com",
   "keywords": [
-    "webpack3",
+    "webpack5",
     "typescript",
     "react",
     "frontend"
   ],
   "scripts": {
-    "clean": "rimraf dist build",
-    "tsc": "npm run clean && tsc",
-    "start:size": "better-npm-run start:size",
-    "start": "better-npm-run start",
+    "clean": "rimraf dist build", 
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "open:dist": "lite-server --config ./dev-config/lite-server-config.json ",
-    "build": "better-npm-run build:dev",
-    "build:dev": "better-npm-run build:dev",
-    "build:prod": "better-npm-run build:prod",
-    "tree:dir": "treee -l 2 --ignore node_modules/,.git/",
-    "lint": "tslint ./src/**/*.ts"
-  },
-  "betterScripts": {
-    "start": {
-      "command": "better-npm-run dev"
-    },
-    "start:size": {
-      "command": "better-npm-run dev",
-      "env": {
-        "NODE_ENV": "production",
-        "analysis": "1",
-        "description": "运行构建后会自动打开包分析"
-      }
-    },
-    "dev": {
-      "command": "webpack-dev-server --config ./dev-config/webpack.config.ts --progress --hot ",
-      "env": {
-        "NODE_ENV": "development",
-        "IS_PROXY": true
-      }
-    },
-    "build": {
-      "command": "webpack --config ./dev-config/webpack.config.ts --progress --hide-modules --display-error-details"
-    },
-    "build:dev": {
-      "command": "better-npm-run build",
-      "env": {
-        "NODE_ENV": "development"
-      }
-    },
-    "build:prod": {
-      "command": "better-npm-run build",
-      "env": {
-        "NODE_ENV": "production"
-      }
-    }
+    "tree:dir": "treee -l 2 --ignore node_modules/,.git/"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "classnames": "^2.2.5",
     "fastclick": "^1.0.6",
     "history": "^4.7.2",
-    "moment": "^2.18.1",
     "normalize.css": "^7.0.0",
+    "npm": "^7.20.0",
     "qrcode": "^0.9.0",
     "qs": "^6.5.0",
-    "react": "^16.0.0",
-    "react-dom": "16.0.0",
-    "react-router-dom": "^4.2.2"
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "start": "^5.1.0",
+    "ts-polyfill": "^3.3.3",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@types/node": "^8.0.28",
-    "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.7",
-    "@types/react-router-dom": "^4.0.8",
-    "@types/webpack": "^3.0.10",
-    "@types/webpack-env": "^1.13.1",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/plugin-proposal-private-methods": "^7.14.5",
+    "@babel/plugin-syntax-decorators": "^7.14.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-typescript": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
     "autoprefixer": "^7.1.5",
-    "awesome-typescript-loader": "^3.2.3",
-    "better-npm-run": "0.0.14",
+    "babel-loader": "^8.2.2",
     "bitbar-webpack-progress-plugin": "^0.1.3",
-    "clean-webpack-plugin": "^0.1.17",
+    "clean-webpack-plugin": "^3.0.0",
     "cli-color": "^1.2.0",
-    "copy-webpack-plugin": "^4.0.1",
+    "copy-webpack-plugin": "^8.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "0.23.1",
-    "extract-text-webpack-plugin": "^3.0.0",
+    "css-minimizer-webpack-plugin": "^1.3.0",
+    "dotenv": "^10.0.0",
+    "dotenv-expand": "^5.1.0",
     "file-loader": "^0.11.2",
-    "friendly-errors-webpack-plugin": "^1.6.1",
     "globby": "^6.1.0",
-    "html-webpack-plugin": "^2.30.1",
-    "less": "2.7.1",
-    "less-loader": "2.2.3",
+    "html-webpack-plugin": "^5.3.1",
+    "is-wsl": "^2.2.0",
+    "less": "^3.9.0",
+    "less-loader": "^10.0.1",
     "lite-server": "^2.3.0",
-    "postcss-loader": "^2.0.8",
-    "postcss-px2rem": "^0.3.0",
+    "mini-css-extract-plugin": "^1.4.0",
+    "postcss-loader": "^5.2.0",
+    "postcss-preset-env": "^6.7.0",
     "progress-webpack-plugin": "^0.0.12",
-    "prop-types": "^15.6.0",
-    "pug": "^2.0.0-rc.4",
-    "pug-loader": "^2.3.0",
     "react-hot-loader": "^3.0.0",
-    "require-dir": "^0.3.1",
+    "require-dir": "^1.2.0",
     "rimraf": "^2.6.1",
     "script-ext-html-webpack-plugin": "^1.8.5",
-    "source-map-loader": "^0.2.1",
-    "strip-loader": "^0.1.2",
-    "style-loader": "0.13.1",
-    "stylefmt": "^6.0.0",
-    "stylefmt-loader": "^1.2.3",
-    "stylelint": "^8.1.1",
-    "stylelint-config-standard": "^17.0.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "style-loader": "^3.0.0",
+    "terser-webpack-plugin": "^5.1.4",
     "tree-cli": "^0.4.12",
-    "ts-loader": "^2.3.2",
-    "ts-node": "^3.3.0",
-    "tslint": "^5.4.3",
-    "tslint-loader": "^3.5.3",
+    "ts-node": "^10.1.0",
     "typescript": "^2.5.3",
     "url-loader": "0.5.7",
-    "web-dev-server": "^1.1.1",
-    "webpack": "^3.6.0",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1"
+    "webpack": "^5.43.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-middleware": "^5.0.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-manifest-plugin": "^3.1.1",
+    "webpack-merge": "^5.8.0"
   },
   "engines": {
-    "node": ">=7.6"
+    "node": ">=10"
   },
   "repository": "https://github.com/githbq/hbq-typescript-react-boilerplate.git",
   "license": "MIT"
