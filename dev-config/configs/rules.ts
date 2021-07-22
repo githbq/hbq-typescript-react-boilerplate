@@ -7,12 +7,10 @@ import { getCssRules } from "./rules.css";
 import fileRules from "./rules.file";
 import babelRules from "./rules.babel";
 
-let _rules = [
+export const rules = [
   ...getCssRules({
     cssModules: true,
   }),
   ...fileRules,
   ...babelRules,
 ];
-
-export const rules = _rules;

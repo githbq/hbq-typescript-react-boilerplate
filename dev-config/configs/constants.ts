@@ -20,6 +20,5 @@ export const NODE_ENV = process.env.NODE_ENV || "development";
 // 判断当前是否处于开发状态下
 export const __DEV__ = NODE_ENV === "development";
 //模板地址
-export const TEMPLATE_PATH = root("dev-config/index.template.html");
-export const TEMPLATE_PATH_PUG = root("dev-config/index.template.pug");
+export const TEMPLATE_PATH = root("dev-config/index.template.html"); 
 export const isWebpackDevServer = process.argv[1] && !!/webpack-dev-server/.exec(process.argv[1]);

@@ -5,7 +5,7 @@ import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
  */
 export const getCssRules = ({ cssModules = false }) => {
   const localIdentName = "[name]__[local]___[hash:base64:5]";
-  const postCSSRule = {
+  const postCSSLoader = {
     loader: "postcss-loader",
     options: {
       postcssOptions: {
@@ -24,22 +24,15 @@ export const getCssRules = ({ cssModules = false }) => {
       // execute: false
     },
   };
-  const cssRule = {
+  const cssLoader = {
     loader: "css-loader",
-    options: {
-      importLoaders: 2,
-      modules: cssModules,
-      localIdentName,
-      minimize: false,
-      sourceMap: true,
-    },
   };
   const lessRule = {
     test: /\.less$/,
     use: [
       MiniCssExtractPlugin.loader,
-      cssRule,
-      postCSSRule,
+      cssLoader,
+      postCSSLoader,
       {
         loader: "less-loader",
         options: {
@@ -51,5 +44,7 @@ export const getCssRules = ({ cssModules = false }) => {
       },
     ],
   };
+  const cssRule = { test: /.css$/, use: [cssLoader] };
+
   return [cssRule, lessRule];
 };

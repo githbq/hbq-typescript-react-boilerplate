@@ -1,12 +1,11 @@
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
-import { TEMPLATE_PATH_PUG, __DEV__ } from "./constants";
+import { TEMPLATE_PATH, __DEV__ } from "./constants";
 import { templateSuffix, regTemplate, entry } from "./entry";
 import { resolveClientEnv } from "./dotenv";
 const chunks = ["vendor", "common", ...(__DEV__ ? ["patch"] : [])];
 //createHtmlPlugin
 function createHtmlPlugin(name, isDev = false, template = null) {
-  //默认使用 ./index.template.pug 模板
-  template = template || TEMPLATE_PATH_PUG;
+  template = TEMPLATE_PATH;
   const data = {
     ...resolveClientEnv(true),
   };
