@@ -1,12 +1,12 @@
 {
   "name": "react-scaffold",
   "version": "1.0.0",
-  "description": "react typescript webpack2",
+  "description": "react16 typescript webpack5",
   "author": "hbqhbq123@qq.com",
   "keywords": [
     "webpack5",
     "typescript",
-    "react",
+    "react16",
     "frontend"
   ],
   "scripts": {
