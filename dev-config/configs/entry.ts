@@ -21,9 +21,8 @@ export const regTemplate = /-template$/;
 
 apps.forEach((n) => {
   let key = pathTool.relative(`${APP_PATH}/apps`, n);
-  key = "/" + key;
   key = key.replace(/^(\.|\\|\/)*/, "").replace(regExt, "");
-  if (/\.(html|pug)$/.test(n)) {
+  if (/\.(html)$/.test(n)) {
     //如果是html文件 则以-template结尾
     key += templateSuffix;
     templateObject[key] = n;

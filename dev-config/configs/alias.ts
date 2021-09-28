@@ -1,7 +1,8 @@
 /**
  * 别名配置
  */
-import { APP_PATH } from './constants'
+import { APP_PATH } from "./constants";
 export const alias = {
-  '@': APP_PATH,
-}
+  "react-dom": "@hot-loader/react-dom",
+  "@": APP_PATH,
+};

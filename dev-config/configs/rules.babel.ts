@@ -30,11 +30,15 @@ export default [
         ],
         plugins: [
           [
+            "react-hot-loader/babel",
+            {
+              safetyNet: false,
+            },
+          ],
+          [
             "@babel/plugin-transform-typescript",
             { allowNamespaces: true, allowDeclareFields: true, onlyRemoveTypeImports: true },
           ],
-          // 按需引入 antd-mobile 和对应的样式
-          ["import", { libraryName: "antd-mobile", style: true }, "antd-mobile"],
           // 按需引入 antd 和对应的样式
           ["import", { libraryName: "antd", style: true }, "antd"],
           "@babel/plugin-syntax-dynamic-import",
