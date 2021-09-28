@@ -11,7 +11,7 @@ export default {
   htmlPaths: htmlPaths,
   title: 'ts-react-boilerplate',
   apiUrl: `http://localhost:3604`, //如果配了这个  就会走后端的反向代理
-  favicon: '/assets/favicon.ico',
+  favicon: 'assets/favicon.ico',
   isWebpackDevServer,
   __DEV__,
   NODE_ENV
