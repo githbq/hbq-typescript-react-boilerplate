@@ -5,18 +5,17 @@
 import * as React from "react";
 import { Route, Router, Switch } from "react-router-dom";
 
-import "./style.less";
+import "./index.less";
 
 import DemoComponent from "@/components/Demo";
 import DemoComponent2 from "@/components/Demo2";
 
-interface Props {
+interface IProps {
   history: any;
 }
-export default class extends React.Component<Props, {}> {
-  render() {
-    return (
-      <Router history={this.props.history}>
+export default (props:IProps)=>
+      (
+      <Router history={props.history}>
         <Route
           render={({ location }) => {
             return (
@@ -30,6 +29,5 @@ export default class extends React.Component<Props, {}> {
           }}
         />
       </Router>
-    );
-  }
+    ); 
 }

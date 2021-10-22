@@ -1,1 +1,1 @@
-import 'normalize.css'
+import 'css-reset-and-normalize'
