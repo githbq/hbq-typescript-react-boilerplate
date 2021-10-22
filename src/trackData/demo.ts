@@ -4,7 +4,7 @@ import { createHandler } from "./utils";
 const commonData = {
   user_id: "",
   platform: "",
-  page: "homepage",
+  page: "demo",
   perspective: "1",
 };
 
@@ -25,18 +25,18 @@ export const pv = () => {
 };
 
 /**
- * 「查看/更多OKR 」曝光
+ * 「查看/更多ABC 」曝光
  */
-export const showMoreOKRAutoShow = (dom: HTMLElement) => {
+export const showMoreABCAutoShow = (dom: HTMLElement) => {
   handler.do(dom, "PAGE_XXX_SHOW", {}, ["perspective"]);
 };
 
 export const showAndMoreORKClick = (isView: boolean) => {
   handler.do(
-    "PAGE_OKR_CLICK",
+    "PAGE_ABC_CLICK",
     {
       first_area: "xxx",
-      second_area: `${isView ? "view" : "more"}_okr`,
+      second_area: `${isView ? "view" : "more"}_abc`,
     },
     ["perspective"]
   );

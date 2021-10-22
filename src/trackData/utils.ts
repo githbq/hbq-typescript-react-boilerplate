@@ -4,7 +4,7 @@ import { track, autoShow } from '@/utils/logger';
 type Args = [string | HTMLElement, (string | any)?, (any | string[])?, string[]?];
 type TrackOptions = {
   trackType: 'PV' | 'SHOW' | 'CUSTOM' | 'CLICK' | 'DRAG' | 'PULL' | 'LONG_PRESS' | 'SCALE';
-  optionsType?: 'USER_OPERATION' | 'enter' | 'hide' | 'visible' | 'leave' | any;
+  optionsType?: 'OPERATION' | 'enter' | 'hide' | 'visible' | 'leave' | any;
 };
 export const createHandler = (commonData: any, usuallyKeys?: string[]) => {
   let tempParams: any = { value: null };
@@ -47,7 +47,7 @@ export const createHandler = (commonData: any, usuallyKeys?: string[]) => {
     if (dom) {
       autoShow(dom, eventName, params);
     } else {
-      const newTrackOptions = trackOptions || { trackType: 'CLICK', optionsType: 'USER_OPERATION' };
+      const newTrackOptions = trackOptions || { trackType: 'CLICK', optionsType: 'OPERATION' };
       if (newTrackOptions.trackType === 'PV') {
         track(newTrackOptions.trackType, {
           page: eventName,
@@ -83,7 +83,7 @@ export const createHandler = (commonData: any, usuallyKeys?: string[]) => {
         }
       });
     }),
-    click: (...args: Args) => core(args, { trackType: 'CLICK', optionsType: 'USER_OPERATION' }),
+    click: (...args: Args) => core(args, { trackType: 'CLICK', optionsType: 'OPERATION' }),
     do: (...args: Args) => core(args),
   };
   return methods;

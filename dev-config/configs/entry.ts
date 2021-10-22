@@ -30,7 +30,7 @@ apps.forEach((n) => {
   }
   entryObject[key] = n.replace(regExt, "");
 });
-console.log("entryObject", color.green(JSON.stringify(entryObject)));
+console.log("entries:", color.green(JSON.stringify(entryObject)));
 export const entry = {
   templateSuffix,
   regTemplate,
